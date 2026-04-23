@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Stone & Tile — Fernandina Beach, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+  :root {
+    --stone: #2c2825; --sand: #e8e0d5; --cream: #f5f0ea;
+    --travertine: #c9b99a; --slate: #4a4440; --rust: #8b4a2b;
+    --white: #fdfaf7; --gold: #b89a6a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--stone); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 3rem;
+    background: rgba(253,250,247,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(44,40,37,0.1);
+  }
+  .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+  .nav-logo span:first-child { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.12em; color: var(--stone); }
+  .nav-logo span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--slate); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-cta { background: var(--stone); color: var(--white) !important; padding: 0.6rem 1.4rem; border-radius: 2px; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--rust) !important; }
+
+  /* HERO */
+  #home { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6rem 4rem 6rem 6rem; }
+  .hero-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: 0.04em; color: var(--stone); opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.75em; color: var(--rust); display: block; }
+  .hero-desc { margin-top: 2rem; font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--slate); max-width: 400px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+  .btn-primary { background: var(--stone); color: var(--white); padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; border-radius: 2px; transition: background 0.25s, transform 0.2s; }
+  .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--stone); padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--travertine); cursor: pointer; border-radius: 2px; transition: border-color 0.25s; }
+  .btn-secondary:hover { border-color: var(--stone); }
+  .hero-badge { display: flex; align-items: center; gap: 0.75rem; margin-top: 3rem; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+  .hero-badge-line { width: 40px; height: 1px; background: var(--travertine); }
+  .hero-badge span { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: var(--travertine); letter-spacing: 0.1em; }
+  .hero-right { position: relative; overflow: hidden; }
+  .hero-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; height: 100%; gap: 4px; }
+  .mosaic-tile { overflow: hidden; opacity: 0; animation: fadeIn 1s ease forwards; }
+  .mosaic-tile:nth-child(1) { animation-delay: 0.3s; grid-row: span 2; }
+  .mosaic-tile:nth-child(2) { animation-delay: 0.5s; }
+  .mosaic-tile:nth-child(3) { animation-delay: 0.7s; }
+  .mosaic-tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .mosaic-tile:hover img { transform: scale(1.04); }
+  .mosaic-tile-bg { width: 100%; height: 100%; display: block; }
+  .stone-bg-1 { background: linear-gradient(135deg, #c9b99a 0%, #8b7355 40%, #5c4a35 100%); min-height: 300px; position: relative; }
+  .stone-bg-2 { background: linear-gradient(160deg, #9eada8 0%, #6b7d7a 50%, #3d4e4c 100%); min-height: 150px; }
+  .stone-bg-3 { background: linear-gradient(45deg, #d4c5b0 0%, #a8916f 60%, #7a6545 100%); min-height: 150px; }
+  .stone-label { position: absolute; bottom: 1rem; left: 1rem; background: rgba(44,40,37,0.7); backdrop-filter: blur(8px); color: var(--cream); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.35rem 0.7rem; font-family: 'DM Sans', sans-serif; }
+
+  /* STATS */
+  .stats-band { background: var(--stone); padding: 2.5rem 6rem; display: flex; justify-content: space-around; align-items: center; }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--gold); letter-spacing: 0.05em; line-height: 1; }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--travertine); margin-top: 0.3rem; }
+  .stat-divider { width: 1px; height: 50px; background: rgba(201,185,154,0.25); }
+
+  /* SERVICES */
+  #services { padding: 7rem 6rem; background: var(--cream); }
+  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 4rem; }
+  .section-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: 0.05em; line-height: 1; color: var(--stone); }
+  .section-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--rust); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .service-card { background: var(--white); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+  .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(44,40,37,0.12); }
+  .service-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+  .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: rgba(201,185,154,0.2); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--stone); margin-bottom: 0.75rem; }
+  .service-desc { font-size: 0.85rem; line-height: 1.7; color: var(--slate); font-weight: 300; }
+  .service-arrow { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); font-weight: 500; text-decoration: none; transition: gap 0.2s; }
+  .service-arrow:hover { gap: 0.8rem; }
+
+  /* GALLERY */
+  #gallery { padding: 7rem 6rem; background: var(--white); }
+  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 6px; margin-top: 3rem; }
+  .gallery-item { overflow: hidden; position: relative; cursor: pointer; background: var(--sand); }
+  .gallery-item.featured { grid-row: span 2; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; }
+  .gp-1 { background: linear-gradient(160deg, #b09070 0%, #6b5040 60%, #3d2e20 100%); }
+  .gp-2 { background: linear-gradient(135deg, #8fa8a5 0%, #5a7572 60%, #2e4542 100%); }
+  .gp-3 { background: linear-gradient(45deg,  #c8b090 0%, #9a7d5a 50%, #6a5030 100%); }
+  .gp-4 { background: linear-gradient(200deg, #a09080 0%, #6b5d50 50%, #3e332a 100%); }
+  .gp-5 { background: linear-gradient(110deg, #d4c8b8 0%, #a89880 50%, #786855 100%); }
+  .gallery-overlay { position: absolute; inset: 0; background: rgba(44,40,37,0); display: flex; align-items: flex-end; padding: 1.5rem; transition: background 0.35s; }
+  .gallery-item:hover .gallery-overlay { background: rgba(44,40,37,0.45); }
+  .gallery-tag { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); opacity: 0; transform: translateY(8px); transition: opacity 0.35s, transform 0.35s; background: var(--rust); padding: 0.3rem 0.7rem; }
+  .gallery-item:hover .gallery-tag { opacity: 1; transform: translateY(0); }
+
+  /* PROCESS */
+  .process-section { padding: 7rem 6rem; background: var(--stone); position: relative; overflow: hidden; }
+  .process-section::before { content: 'APEX'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 20rem; color: rgba(255,255,255,0.03); top: 50%; left: 50%; transform: translate(-50%, -50%); letter-spacing: 0.1em; pointer-events: none; white-space: nowrap; }
+  .process-section .section-eyebrow { color: var(--gold); }
+  .process-section .section-title { color: var(--white); }
+  .process-section .section-title em { color: var(--travertine); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 4rem; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 2.2rem; left: 12%; right: 12%; height: 1px; background: rgba(201,185,154,0.2); }
+  .process-step { padding: 0 2rem; text-align: center; }
+  .step-dot { width: 45px; height: 45px; border-radius: 50%; background: var(--stone); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); position: relative; z-index: 1; transition: background 0.3s, border-color 0.3s; }
+  .process-step:hover .step-dot { background: var(--rust); border-color: var(--rust); color: var(--white); }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--sand); margin-bottom: 0.75rem; }
+  .step-desc { font-size: 0.82rem; line-height: 1.7; color: rgba(201,185,154,0.7); font-weight: 300; }
+
+  /* ABOUT */
+  #about { padding: 7rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--cream); }
+  .about-visual { position: relative; }
+  .about-img-main { width: 100%; aspect-ratio: 4/5; background: linear-gradient(160deg, #9eada8 0%, #5a7572 50%, #2e4542 100%); border-radius: 2px; overflow: hidden; }
+  .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+  .about-img-accent { position: absolute; width: 55%; aspect-ratio: 1; background: linear-gradient(135deg, #c9b99a 0%, #8b7355 100%); bottom: -2rem; right: -2rem; border: 6px solid var(--cream); border-radius: 2px; overflow: hidden; }
+  .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+  .about-years-badge { position: absolute; top: 2rem; left: -2rem; background: var(--rust); color: var(--white); padding: 1.5rem; text-align: center; border-radius: 2px; min-width: 100px; }
+  .years-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1; display: block; }
+  .years-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
+  .about-content .section-eyebrow { margin-bottom: 0.75rem; }
+  .about-content .section-title { margin-bottom: 1.5rem; }
+  .about-text { font-size: 0.95rem; line-height: 1.85; color: var(--slate); font-weight: 300; margin-bottom: 1.5rem; }
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+  .about-feature { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .feature-check { width: 20px; height: 20px; background: var(--rust); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: white; font-size: 0.7rem; }
+  .feature-text { font-size: 0.82rem; color: var(--slate); line-height: 1.4; font-weight: 500; }
+
+  /* INQUIRY */
+  #inquiry { padding: 7rem 6rem; background: var(--white); display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; align-items: start; }
+  .inquiry-left .section-eyebrow { margin-bottom: 0.75rem; }
+  .inquiry-left .section-title { margin-bottom: 1.5rem; }
+  .inquiry-desc { font-size: 0.9rem; line-height: 1.8; color: var(--slate); font-weight: 300; margin-bottom: 3rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; }
+  .contact-icon { width: 42px; height: 42px; border: 1.5px solid var(--travertine); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-info-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--travertine); margin-bottom: 0.2rem; }
+  .contact-info-value { font-size: 0.9rem; color: var(--stone); font-weight: 500; }
+  .inquiry-form { background: var(--cream); padding: 3rem; border-radius: 2px; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--stone); margin-bottom: 0.5rem; }
+  .form-subtitle { font-size: 0.82rem; color: var(--travertine); margin-bottom: 2rem; font-style: italic; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); font-weight: 500; }
+  .form-group input, .form-group select, .form-group textarea { background: var(--white); border: 1.5px solid transparent; border-radius: 2px; padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--stone); outline: none; transition: border-color 0.2s; width: 100%; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-group select { appearance: none; cursor: pointer; }
+  .submit-btn { width: 100%; background: var(--stone); color: var(--white); padding: 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; transition: background 0.25s, transform 0.2s; margin-top: 0.5rem; }
+  .submit-btn:hover { background: var(--rust); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { background: var(--stone); padding: 3rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(201,185,154,0.15); }
+  .footer-logo span:first-child { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--white); display: block; }
+  .footer-logo span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--travertine); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.72rem; color: rgba(201,185,154,0.4); letter-spacing: 0.08em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #home { grid-template-columns: 1fr; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .hero-right { display: none; }
+    .stats-band { padding: 2rem 1.5rem; flex-wrap: wrap; gap: 1.5rem; }
+    #services, #gallery, .process-section, #about, #inquiry { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item.featured { grid-row: span 1; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    #about { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    #inquiry { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span>Apex Stone & Tile</span>
+    <span>Fernandina Beach, Florida</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#inquiry" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow" id="hero-eyebrow"></p>
+    <h1 class="hero-title" id="hero-title"></h1>
+    <p class="hero-desc" id="hero-desc"></p>
+    <div class="hero-actions">
+      <a href="#inquiry" class="btn-primary">Request a Quote</a>
+      <a href="#gallery" class="btn-secondary">View Our Work</a>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-line"></div>
+      <span id="hero-badge"></span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic" id="hero-mosaic">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band" id="stats-band">
+  <!-- populated by JS -->
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-eyebrow">What We Do</p>
+      <h2 class="section-title">Our <em>Specialties</em></h2>
+    </div>
+  </div>
+  <div class="services-grid" id="services-grid">
+    <!-- populated by JS -->
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-eyebrow">Portfolio</p>
+      <h2 class="section-title">Recent <em>Work</em></h2>
+    </div>
+    <a href="#inquiry" class="btn-secondary">Start Your Project</a>
+  </div>
+  <div class="gallery-grid reveal" id="gallery-grid">
+    <!-- populated by JS -->
+  </div>
+  <div class="reveal" style="text-align:center; margin-top:3rem;">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--travertine);margin-bottom:1rem;">Every project is one of a kind — just like your space.</p>
+    <a href="#inquiry" class="btn-primary">Discuss Your Project</a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<div class="process-section">
+  <div class="section-header reveal" style="justify-content:flex-start;">
+    <div>
+      <p class="section-eyebrow">How It Works</p>
+      <h2 class="section-title">Simple <em>Process</em></h2>
+    </div>
+  </div>
+  <div class="process-steps reveal" id="process-steps">
+    <!-- populated by JS -->
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual reveal">
+    <div class="about-img-main" id="about-img-main">
+      <!-- img injected by JS if set -->
+    </div>
+    <div class="about-img-accent" id="about-img-accent"></div>
+    <div class="about-years-badge">
+      <span class="years-num" id="years-num"></span>
+      <span class="years-label" id="years-label"></span>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <p class="section-eyebrow">About Apex</p>
+    <h2 class="section-title" id="about-title"></h2>
+    <p class="about-text" id="about-para1"></p>
+    <p class="about-text" id="about-para2"></p>
+    <div class="about-features" id="about-features">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- INQUIRY -->
+<section id="inquiry">
+  <div class="inquiry-left reveal">
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2 class="section-title">Start Your<br><em>Custom</em> Project</h2>
+    <p class="inquiry-desc" id="inquiry-desc"></p>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <p class="contact-info-label">Location</p>
+          <p class="contact-info-value" id="contact-address"></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="contact-info-label">Phone</p>
+          <p class="contact-info-value" id="contact-phone"></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <p class="contact-info-label">Email</p>
+          <p class="contact-info-value" id="contact-email"></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <p class="contact-info-label">Hours</p>
+          <p class="contact-info-value" id="contact-hours"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="inquiry-form reveal">
+    <h3 class="form-title">Request a Free Quote</h3>
+    <p class="form-subtitle">We typically respond within 24 hours.</p>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="firstName" placeholder="Jane" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" name="lastName" placeholder="Smith" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(904) 555-0000">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="jane@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Project Type</label>
+        <select name="projectType" id="form-project-type">
+          <option value="">Select a service...</option>
+          <!-- populated by JS to match services -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Approximate Square Footage</label>
+        <select name="sqft">
+          <option value="">Select a range...</option>
+          <option>Under 100 sq ft</option>
+          <option>100–300 sq ft</option>
+          <option>300–600 sq ft</option>
+          <option>600–1,000 sq ft</option>
+          <option>1,000+ sq ft</option>
+          <option>Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Project</label>
+        <textarea name="message" placeholder="Describe your space, your vision, any materials you have in mind, or any questions you have..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit Quote Request →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span>Apex Stone & Tile</span>
+    <span>Fernandina Beach, Florida</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#inquiry">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Apex Stone & Tile. All rights reserved.</p>
+</footer>
+
+<script>
+// ── Placeholder gradient colours for gallery items without images ──
+const gpClasses = ['gp-1','gp-2','gp-3','gp-4','gp-5'];
+
+// ── Fetch a JSON file, return parsed object or null ──
+async function fetchJSON(path) {
+  try {
+    const r = await fetch(path);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+// ── Fetch all JSON files in a _data folder via a manifest ──
+async function fetchFolder(files) {
+  const results = await Promise.all(files.map(f => fetchJSON(f)));
+  return results.filter(Boolean);
+}
+
+// ── HERO ──────────────────────────────────────────────────────────
+async function loadHero() {
+  const d = await fetchJSON('/_data/hero.json');
+  if (!d) return;
+
+  document.getElementById('hero-eyebrow').textContent = d.eyebrow;
+  document.getElementById('hero-badge').textContent   = d.badge;
+  document.getElementById('hero-desc').textContent    = d.description;
+
+  const title = document.getElementById('hero-title');
+  title.innerHTML = `${d.title1}<br><em>${d.title2}</em><br>${d.title3}`;
+
+  const mosaic = document.getElementById('hero-mosaic');
+  const imgs   = d.images || {};
+
+  const makeTile = (src, bgClass, isMain, label) => {
+    const div = document.createElement('div');
+    div.className = 'mosaic-tile';
+    if (src) {
+      const img = document.createElement('img');
+      img.src = src; img.alt = label || '';
+      if (isMain) {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'position:relative;height:100%';
+        wrap.appendChild(img);
+        if (label) {
+          const lbl = document.createElement('div');
+          lbl.className = 'stone-label';
+          lbl.textContent = label;
+          wrap.appendChild(lbl);
+        }
+        div.appendChild(wrap);
+      } else {
+        div.appendChild(img);
+      }
+    } else {
+      const bg = document.createElement('div');
+      bg.className = `mosaic-tile-bg ${bgClass}`;
+      bg.style.height = '100%';
+      if (isMain && label) {
+        bg.style.position = 'relative';
+        const lbl = document.createElement('div');
+        lbl.className = 'stone-label';
+        lbl.textContent = label;
+        bg.appendChild(lbl);
+      }
+      div.appendChild(bg);
+    }
+    return div;
+  };
+
+  mosaic.appendChild(makeTile(imgs.main,       'stone-bg-1', true,  imgs.label));
+  mosaic.appendChild(makeTile(imgs.topRight,   'stone-bg-2', false, ''));
+  mosaic.appendChild(makeTile(imgs.bottomRight,'stone-bg-3', false, ''));
+}
+
+// ── STATS ─────────────────────────────────────────────────────────
+async function loadStats() {
+  const d = await fetchJSON('/_data/stats.json');
+  if (!d || !d.items) return;
+  const band = document.getElementById('stats-band');
+  band.innerHTML = '';
+  d.items.forEach((item, i) => {
+    if (i > 0) {
+      const div = document.createElement('div');
+      div.className = 'stat-divider';
+      band.appendChild(div);
+    }
+    band.innerHTML += `
+      <div class="stat-item">
+        <div class="stat-num">${item.num}</div>
+        <div class="stat-label">${item.label}</div>
+      </div>`;
+  });
+}
+
+// ── SERVICES ──────────────────────────────────────────────────────
+const serviceFiles = [
+  '/_data/services/kitchen-bath.json',
+  '/_data/services/natural-stone.json',
+  '/_data/services/pool-outdoor.json',
+  '/_data/services/mosaic-inlay.json',
+  '/_data/services/commercial.json',
+  '/_data/services/restoration.json',
+];
+
+async function loadServices() {
+  const all = await fetchFolder(serviceFiles);
+  const active = all
+    .filter(s => s.active !== false)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+  const grid = document.getElementById('services-grid');
+  grid.innerHTML = '';
+
+  // Fix grid columns based on count
+  const cols = active.length <= 4 ? 2 : 3;
+  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+  active.forEach((s, i) => {
+    grid.innerHTML += `
+      <div class="service-card reveal">
+        <div class="service-num">${String(i + 1).padStart(2, '0')}</div>
+        <div class="service-icon">${s.icon || '🏠'}</div>
+        <h3 class="service-name">${s.name}</h3>
+        <p class="service-desc">${s.description}</p>
+        <a href="#inquiry" class="service-arrow">Get a Quote →</a>
+      </div>`;
+  });
+
+  // Also populate form dropdown to match active services
+  const select = document.getElementById('form-project-type');
+  if (select) {
+    select.innerHTML = '<option value="">Select a service...</option>';
+    active.forEach(s => {
+      const opt = document.createElement('option');
+      opt.textContent = s.name;
+      select.appendChild(opt);
+    });
+    const notSure = document.createElement('option');
+    notSure.textContent = 'Not Sure Yet';
+    select.appendChild(notSure);
+  }
+}
+
+// ── GALLERY ───────────────────────────────────────────────────────
+const galleryFiles = [
+  '/_data/gallery/master-bath.json',
+  '/_data/gallery/pool-surround.json',
+  '/_data/gallery/kitchen-backsplash.json',
+  '/_data/gallery/foyer-floor.json',
+  '/_data/gallery/shower-wall.json',
+];
+
+async function loadGallery() {
+  const all = await fetchFolder(galleryFiles);
+  const sorted = all.sort((a, b) => (a.order || 0) - (b.order || 0));
+
+  // Move featured item first
+  const featured = sorted.find(g => g.featured) || sorted[0];
+  const rest = sorted.filter(g => g !== featured);
+  const ordered = [featured, ...rest].slice(0, 5);
+
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = '';
+
+  ordered.forEach((item, i) => {
+    const isFeatured = i === 0;
+    const div = document.createElement('div');
+    div.className = 'gallery-item' + (isFeatured ? ' featured' : '');
+
+    if (item.image) {
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" />
+        <div class="gallery-overlay"><span class="gallery-tag">${item.tag}</span></div>`;
+    } else {
+      div.innerHTML = `
+        <div class="gallery-placeholder ${gpClasses[i % gpClasses.length]}">${item.title}</div>
+        <div class="gallery-overlay"><span class="gallery-tag">${item.tag}</span></div>`;
+    }
+    grid.appendChild(div);
+  });
+}
+
+// ── PROCESS ───────────────────────────────────────────────────────
+async function loadProcess() {
+  const d = await fetchJSON('/_data/process.json');
+  if (!d || !d.steps) return;
+  const container = document.getElementById('process-steps');
+  container.style.gridTemplateColumns = `repeat(${d.steps.length}, 1fr)`;
+  container.innerHTML = '';
+  d.steps.forEach((step, i) => {
+    container.innerHTML += `
+      <div class="process-step">
+        <div class="step-dot">${String(i + 1).padStart(2, '0')}</div>
+        <h3 class="step-title">${step.title}</h3>
+        <p class="step-desc">${step.desc}</p>
+      </div>`;
+  });
+}
+
+// ── ABOUT ─────────────────────────────────────────────────────────
+async function loadAbout() {
+  const d = await fetchJSON('/_data/about.json');
+  if (!d) return;
+
+  document.getElementById('about-title').innerHTML  = `${d.title1}<br><em>${d.title2}</em>`;
+  document.getElementById('about-para1').textContent = d.para1;
+  document.getElementById('about-para2').textContent = d.para2;
+  document.getElementById('years-num').textContent   = d.yearsNum;
+  document.getElementById('years-label').textContent = d.yearsLabel;
+
+  const mainEl = document.getElementById('about-img-main');
+  if (d.mainImage) {
+    mainEl.innerHTML = `<img src="${d.mainImage}" alt="About Apex" />`;
+  }
+  const accentEl = document.getElementById('about-img-accent');
+  if (d.accentImage) {
+    accentEl.innerHTML = `<img src="${d.accentImage}" alt="" />`;
+  }
+
+  const featuresEl = document.getElementById('about-features');
+  featuresEl.innerHTML = '';
+  (d.features || []).forEach(f => {
+    featuresEl.innerHTML += `
+      <div class="about-feature">
+        <div class="feature-check">✓</div>
+        <span class="feature-text">${f}</span>
+      </div>`;
+  });
+}
+
+// ── CONTACT ───────────────────────────────────────────────────────
+async function loadContact() {
+  const d = await fetchJSON('/_data/contact.json');
+  if (!d) return;
+  document.getElementById('contact-address').textContent = d.address;
+  document.getElementById('contact-phone').textContent   = d.phone;
+  document.getElementById('contact-email').textContent   = d.email;
+  document.getElementById('contact-hours').textContent   = d.hours;
+  document.getElementById('inquiry-desc').textContent    = d.inquiryDesc;
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────
+function initReveal() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// ── NAV HIGHLIGHT ────────────────────────────────────────────────
+function initNav() {
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const sections = ['home','gallery','about','inquiry'];
+    let current = 'home';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--rust)' : '';
+    });
+  });
+}
+
+// ── Netlify Identity redirect ────────────────────────────────────
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', user => {
+    if (!user) {
+      window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+    }
+  });
+}
+
+// ── BOOT ─────────────────────────────────────────────────────────
+(async () => {
+  await Promise.all([
+    loadHero(), loadStats(), loadServices(),
+    loadGallery(), loadProcess(), loadAbout(), loadContact()
+  ]);
+  // Re-observe after dynamic content is added
+  initReveal();
+  initNav();
+})();
+</script>
+</body>
+</html>

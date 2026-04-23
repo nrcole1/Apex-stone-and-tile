@@ -1,0 +1,111 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+
+  # ── SITE SETTINGS ──────────────────────────────────────────
+  - name: "settings"
+    label: "Site Settings"
+    files:
+
+      - label: "Hero Section"
+        name: "hero"
+        file: "_data/hero.json"
+        fields:
+          - { label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "Custom Stonework · Fernandina Beach, FL" }
+          - { label: "Title Line 1", name: "title1", widget: "string", default: "Crafted" }
+          - { label: "Title Line 2 (italic)", name: "title2", widget: "string", default: "in stone." }
+          - { label: "Title Line 3", name: "title3", widget: "string", default: "Built to last." }
+          - { label: "Description", name: "description", widget: "text", default: "From coastal kitchen backsplashes to full-floor marble transformations — Apex delivers precision tilework and natural stone installation tailored to your vision." }
+          - { label: "Badge Text", name: "badge", widget: "string", default: "Licensed · Insured · Local Since 2009" }
+          - label: "Hero Images"
+            name: "images"
+            widget: "object"
+            fields:
+              - { label: "Main (tall left) Image", name: "main", widget: "image", required: false }
+              - { label: "Top Right Image", name: "topRight", widget: "image", required: false }
+              - { label: "Bottom Right Image", name: "bottomRight", widget: "image", required: false }
+              - { label: "Image Label", name: "label", widget: "string", default: "Travertine Installation" }
+
+      - label: "Stats Bar"
+        name: "stats"
+        file: "_data/stats.json"
+        fields:
+          - label: "Stats"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "num", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+      - label: "About Section"
+        name: "about"
+        file: "_data/about.json"
+        fields:
+          - { label: "Section Title Line 1", name: "title1", widget: "string", default: "Local Expertise." }
+          - { label: "Section Title Line 2 (italic)", name: "title2", widget: "string", default: "Unmatched Results." }
+          - { label: "Paragraph 1", name: "para1", widget: "text" }
+          - { label: "Paragraph 2", name: "para2", widget: "text" }
+          - label: "Feature Checklist"
+            name: "features"
+            widget: "list"
+            field: { label: "Feature", name: "text", widget: "string" }
+          - { label: "About Main Image", name: "mainImage", widget: "image", required: false }
+          - { label: "About Accent Image", name: "accentImage", widget: "image", required: false }
+          - { label: "Years Badge Number", name: "yearsNum", widget: "string", default: "15+" }
+          - { label: "Years Badge Label", name: "yearsLabel", widget: "string", default: "Years of Craft" }
+
+      - label: "Contact Info"
+        name: "contact"
+        file: "_data/contact.json"
+        fields:
+          - { label: "Address", name: "address", widget: "string", default: "Fernandina Beach, FL 32034" }
+          - { label: "Phone", name: "phone", widget: "string", default: "(904) 555-0198" }
+          - { label: "Email", name: "email", widget: "string", default: "info@apexstoneandtile.com" }
+          - { label: "Hours", name: "hours", widget: "string", default: "Mon–Sat · 7am – 6pm" }
+          - { label: "Inquiry Description", name: "inquiryDesc", widget: "text", default: "Tell us about your space and what you're envisioning. We'll get back to you within one business day to schedule your free consultation." }
+
+      - label: "Process Steps"
+        name: "process"
+        file: "_data/process.json"
+        fields:
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+
+  # ── SERVICES ───────────────────────────────────────────────
+  - name: "services"
+    label: "Services"
+    label_singular: "Service"
+    folder: "_data/services"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "Service Name", name: "name", widget: "string" }
+      - { label: "Icon (emoji)", name: "icon", widget: "string", default: "🏠" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Order (1, 2, 3...)", name: "order", widget: "number", default: 1 }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+
+  # ── GALLERY ────────────────────────────────────────────────
+  - name: "gallery"
+    label: "Gallery"
+    label_singular: "Gallery Image"
+    folder: "_data/gallery"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Tag (e.g. Marble / Residential)", name: "tag", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", default: 1 }
+      - { label: "Featured (shows large)", name: "featured", widget: "boolean", default: false }

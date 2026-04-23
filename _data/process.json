@@ -1,0 +1,8 @@
+{
+  "steps": [
+    { "title": "Inquiry & Consult",   "desc": "Fill out our quote form or give us a call. We'll schedule a free on-site consultation to assess your space and vision." },
+    { "title": "Design & Select",     "desc": "We help you select materials that match your aesthetic, budget, and environment — with samples and expert guidance." },
+    { "title": "Detailed Quote",      "desc": "You receive a transparent, itemized proposal. No surprises, no hidden fees — just a clear scope and fair price." },
+    { "title": "Installation & Finish","desc": "Our crew arrives on time, works clean, and delivers a finished result that exceeds what you imagined." }
+  ]
+}
