@@ -1,7 +1,7 @@
 ---
 title: stone1
 image: /images/uploads/stone1.jpg
-tag: Marble
+tag: commercial
 order: 1
-featured: false
+featured: true
 ---
