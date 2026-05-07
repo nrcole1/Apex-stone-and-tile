@@ -106,6 +106,18 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        default: "kitchen-bath"
+        options:
+          - { label: "Kitchen & Bath", value: "kitchen-bath" }
+          - { label: "Stone Flooring", value: "stone-flooring" }
+          - { label: "Outdoor", value: "outdoor" }
+          - { label: "Mosaic & Inlay", value: "mosaic" }
+          - { label: "Commercial", value: "commercial" }
+          - { label: "Fireplace", value: "fireplace" }
+          - { label: "Other", value: "other" }
       - { label: "Tag (e.g. Marble / Residential)", name: "tag", widget: "string" }
       - { label: "Order", name: "order", widget: "number", default: 1 }
       - { label: "Featured (shows large)", name: "featured", widget: "boolean", default: false }

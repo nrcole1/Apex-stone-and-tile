@@ -593,6 +593,7 @@
     <button class="filter-btn" data-filter="mosaic">Mosaic & Inlay <span class="filter-count" id="count-mosaic"></span></button>
     <button class="filter-btn" data-filter="commercial">Commercial <span class="filter-count" id="count-commercial"></span></button>
     <button class="filter-btn" data-filter="fireplace">Fireplace <span class="filter-count" id="count-fireplace"></span></button>
+    <button class="filter-btn" data-filter="other">Other <span class="filter-count" id="count-other"></span></button>
   </div>
 </div>
 
@@ -961,6 +962,205 @@
     if (e.key === 'ArrowLeft')  navigate(-1);
     if (e.key === 'ArrowRight') navigate(1);
   });
+</script>
+<script>
+  const cmsCategoryLabels = {
+    'kitchen-bath': 'Kitchen & Bath',
+    'stone-flooring': 'Stone Flooring',
+    'outdoor': 'Outdoor',
+    'mosaic': 'Mosaic & Inlay',
+    'commercial': 'Commercial',
+    'fireplace': 'Fireplace',
+    'other': 'Other'
+  };
+
+  const cmsPlaceholderGradients = [
+    'linear-gradient(135deg, #6b5c4e 0%, #8b7355 40%, #a08060 100%)',
+    'linear-gradient(160deg, #b0a898 0%, #d4c9b8 50%, #c4b8a5 100%)',
+    'linear-gradient(140deg, #b89a6a 0%, #c9b99a 50%, #d9cdb5 100%)',
+    'linear-gradient(155deg, #3a3530 0%, #4a4540 50%, #5a5550 100%)',
+    'linear-gradient(135deg, #4a6a7a 0%, #6a8a9a 40%, #9ab0ba 100%)'
+  ];
+
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char]));
+  }
+
+  function categoryFromTag(tag = '') {
+    const normalized = tag.toLowerCase();
+    if (normalized.includes('backsplash') || normalized.includes('bath') || normalized.includes('residential')) return 'kitchen-bath';
+    if (normalized.includes('travertine') || normalized.includes('floor') || normalized.includes('marble')) return 'stone-flooring';
+    if (normalized.includes('outdoor') || normalized.includes('pool') || normalized.includes('slate')) return 'outdoor';
+    if (normalized.includes('mosaic') || normalized.includes('inlay')) return 'mosaic';
+    if (normalized.includes('commercial')) return 'commercial';
+    if (normalized.includes('fireplace')) return 'fireplace';
+    return 'other';
+  }
+
+  async function fetchJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Unable to load ${url}`);
+    return response.json();
+  }
+
+  async function loadCmsGalleryItems() {
+    const manifest = await fetchJson('/content-manifest.json');
+    const paths = manifest.gallery || [];
+    const entries = await Promise.all(paths.map(path =>
+      fetchJson(path).catch(() => null)
+    ));
+
+    return entries
+      .filter(Boolean)
+      .map((item, index) => ({
+        ...item,
+        category: item.category || categoryFromTag(item.tag),
+        order: Number.isFinite(Number(item.order)) ? Number(item.order) : index + 1
+      }))
+      .sort((a, b) => a.order - b.order);
+  }
+
+  function renderCmsGallery(items) {
+    const grid = document.getElementById('galleryGrid');
+    grid.innerHTML = '';
+
+    items.forEach((item, index) => {
+      const title = item.title || 'Gallery Project';
+      const tag = item.tag || cmsCategoryLabels[item.category] || 'Project';
+      const category = cmsCategoryLabels[item.category] ? item.category : 'other';
+      const desc = item.description || tag;
+      const ratio = item.ratio || (index % 3 === 1 ? '3/4' : '4/3');
+      const gradient = cmsPlaceholderGradients[index % cmsPlaceholderGradients.length];
+      const imageHtml = item.image
+        ? `<img class="gallery-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(title)}" style="--ratio:${escapeHtml(ratio)}" />`
+        : `<div class="gallery-img-placeholder" style="--ratio:${escapeHtml(ratio)}; --gradient: ${gradient};"></div>`;
+
+      const card = document.createElement('div');
+      card.className = 'gallery-item reveal visible';
+      card.dataset.category = category;
+      card.dataset.title = title;
+      card.dataset.desc = desc;
+      if (item.image) card.dataset.src = item.image;
+      card.style.setProperty('--gradient', gradient);
+      card.innerHTML = `
+        ${imageHtml}
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-zoom"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          <span class="gallery-overlay-tag">${escapeHtml(tag)}</span>
+          <p class="gallery-overlay-title">${escapeHtml(title)}</p>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function bindCmsGalleryControls() {
+    const cmsItems = Array.from(document.querySelectorAll('.gallery-item'));
+    const cmsFilterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+    const cmsCountLabel = document.getElementById('visible-count');
+    const cmsEmptyState = document.getElementById('galleryEmpty');
+    const cmsLightbox = document.getElementById('lightbox');
+    const cmsImageWrap = document.getElementById('lightboxImageWrap');
+    const cmsTag = document.getElementById('lightboxTag');
+    const cmsTitle = document.getElementById('lightboxTitle');
+    const cmsDesc = document.getElementById('lightboxDesc');
+
+    const counts = { all: cmsItems.length };
+    cmsItems.forEach(item => {
+      counts[item.dataset.category] = (counts[item.dataset.category] || 0) + 1;
+    });
+    Object.keys(cmsCategoryLabels).forEach(category => {
+      const count = counts[category] || 0;
+      const badge = document.getElementById(`count-${category}`);
+      const button = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+      if (badge) badge.textContent = count;
+      if (button) button.hidden = count === 0;
+    });
+    document.getElementById('count-all').textContent = counts.all;
+
+    let activeFilter = 'all';
+    let currentIndex = 0;
+
+    function visibleItems() {
+      return cmsItems.filter(item => !item.classList.contains('hidden'));
+    }
+
+    function applyCmsFilter(filter) {
+      activeFilter = filter;
+      let visible = 0;
+      cmsItems.forEach(item => {
+        const match = filter === 'all' || item.dataset.category === filter;
+        item.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      cmsCountLabel.textContent = visible;
+      cmsEmptyState.classList.toggle('visible', visible === 0);
+      document.querySelectorAll('.filter-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.filter === activeFilter);
+      });
+    }
+
+    function openCmsLightbox(index) {
+      const visible = visibleItems();
+      currentIndex = index;
+      const item = visible[currentIndex];
+      if (!item) return;
+
+      const title = item.dataset.title || '';
+      const tag = item.querySelector('.gallery-overlay-tag')?.textContent.trim() || '';
+      const src = item.dataset.src;
+      const gradient = item.style.getPropertyValue('--gradient') || '#2c2825';
+
+      cmsTag.textContent = tag;
+      cmsTitle.textContent = title;
+      cmsDesc.textContent = item.dataset.desc || '';
+      cmsImageWrap.innerHTML = src
+        ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(title)}" />`
+        : `<div class="lightbox-image-placeholder" style="background:${gradient}; width:100%; min-height:420px;">${escapeHtml(title)}</div>`;
+
+      cmsLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function navigateCmsLightbox(direction) {
+      const visible = visibleItems();
+      if (!visible.length) return;
+      currentIndex = (currentIndex + direction + visible.length) % visible.length;
+      openCmsLightbox(currentIndex);
+    }
+
+    cmsFilterButtons.forEach(button => {
+      const replacement = button.cloneNode(true);
+      button.replaceWith(replacement);
+      replacement.addEventListener('click', () => applyCmsFilter(replacement.dataset.filter));
+    });
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const index = visibleItems().indexOf(item);
+        if (index !== -1) openCmsLightbox(index);
+      });
+    });
+
+    document.getElementById('lightboxPrev').onclick = () => navigateCmsLightbox(-1);
+    document.getElementById('lightboxNext').onclick = () => navigateCmsLightbox(1);
+    applyCmsFilter(activeFilter);
+  }
+
+  loadCmsGalleryItems()
+    .then(items => {
+      renderCmsGallery(items);
+      bindCmsGalleryControls();
+    })
+    .catch(error => {
+      console.error(error);
+      document.getElementById('galleryEmpty').classList.add('visible');
+    });
 </script>
 </body>
 </html>
