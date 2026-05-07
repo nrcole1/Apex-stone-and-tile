@@ -102,6 +102,8 @@ collections:
     folder: "_data/gallery"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     identifier_field: "title"
     fields:
       - { label: "Title", name: "title", widget: "string" }

@@ -8,11 +8,12 @@
     "/_data/services/restoration.json"
   ],
   "gallery": [
+    "/_data/gallery/bathroom-tile-niche.json",
     "/_data/gallery/foyer-floor.json",
     "/_data/gallery/kitchen-backsplash.json",
     "/_data/gallery/master-bath.json",
     "/_data/gallery/pool-surround.json",
     "/_data/gallery/shower-wall.json"
   ],
-  "generated": "2026-05-07T03:46:06.385Z"
+  "generated": "2026-05-07T17:24:45.519Z"
 }
