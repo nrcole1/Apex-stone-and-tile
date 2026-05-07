@@ -1,0 +1,18 @@
+{
+  "services": [
+    "/_data/services/commercial.json",
+    "/_data/services/kitchen-bath.json",
+    "/_data/services/mosaic-inlay.json",
+    "/_data/services/natural-stone.json",
+    "/_data/services/pool-outdoor.json",
+    "/_data/services/restoration.json"
+  ],
+  "gallery": [
+    "/_data/gallery/foyer-floor.json",
+    "/_data/gallery/kitchen-backsplash.json",
+    "/_data/gallery/master-bath.json",
+    "/_data/gallery/pool-surround.json",
+    "/_data/gallery/shower-wall.json"
+  ],
+  "generated": "2026-05-07T03:46:06.385Z"
+}
