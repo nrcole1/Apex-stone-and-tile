@@ -5,7 +5,8 @@
     "/_data/services/mosaic-inlay.json",
     "/_data/services/natural-stone.json",
     "/_data/services/pool-outdoor.json",
-    "/_data/services/restoration.json"
+    "/_data/services/restoration.json",
+    "/_data/services/lvp-hardwood.json"
   ],
   "gallery": [
     "/_data/gallery/bathroom-tile-niche.json",
