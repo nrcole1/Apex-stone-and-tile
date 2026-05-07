@@ -92,6 +92,7 @@ collections:
       - { label: "Service Name", name: "name", widget: "string" }
       - { label: "Icon (emoji)", name: "icon", widget: "string", default: "🏠" }
       - { label: "Description", name: "description", widget: "text" }
+      - { label: "Card Background Image", name: "cardImage", widget: "image", required: false, hint: "Photo that fades in behind the card text when visitors scroll over this service." }
       - { label: "Order (1, 2, 3...)", name: "order", widget: "number", default: 1 }
       - { label: "Active", name: "active", widget: "boolean", default: true }
 

@@ -77,9 +77,13 @@
   .section-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--rust); }
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
   .service-card { background: var(--white); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
-  .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; z-index: 2; }
   .service-card:hover::before { transform: scaleX(1); }
+  .service-card::after { content: ''; position: absolute; inset: 0; background-image: var(--card-img, none); background-size: cover; background-position: center; opacity: 0; transition: opacity 0.9s ease; z-index: 0; }
+  .service-card.img-revealed::after { opacity: 0.14; }
+  .service-card:hover::after { opacity: 0.22; }
   .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(44,40,37,0.12); }
+  .service-card > * { position: relative; z-index: 1; }
   .service-icon { font-size: 2rem; margin-bottom: 1.5rem; }
   .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: rgba(201,185,154,0.2); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
   .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--stone); margin-bottom: 0.75rem; }
@@ -538,14 +542,16 @@ async function loadServices() {
   grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
   active.forEach((s, i) => {
-    grid.innerHTML += `
-      <div class="service-card reveal">
-        <div class="service-num">${String(i + 1).padStart(2, '0')}</div>
-        <div class="service-icon">${s.icon || '🏠'}</div>
-        <h3 class="service-name">${s.name}</h3>
-        <p class="service-desc">${s.description}</p>
-        <a href="#inquiry" class="service-arrow">Get a Quote →</a>
-      </div>`;
+    const card = document.createElement('div');
+    card.className = 'service-card reveal';
+    if (s.cardImage) card.style.setProperty('--card-img', `url('${s.cardImage}')`);
+    card.innerHTML = `
+      <div class="service-num">${String(i + 1).padStart(2, '0')}</div>
+      <div class="service-icon">${s.icon || '🏠'}</div>
+      <h3 class="service-name">${s.name}</h3>
+      <p class="service-desc">${s.description}</p>
+      <a href="#inquiry" class="service-arrow">Get a Quote →</a>`;
+    grid.appendChild(card);
   });
 
   // Also populate form dropdown to match active services
@@ -657,8 +663,15 @@ async function loadContact() {
 // ── SCROLL REVEAL ─────────────────────────────────────────────────
 function initReveal() {
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (e.target.classList.contains('service-card')) {
+          e.target.classList.add('img-revealed');
+        }
+      }
+    });
+  }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
