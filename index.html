@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apex Stone & Tile — Fernandina Beach, FL</title>
+<title>Apex Stone &amp; Tile — Fernandina Beach, FL</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
@@ -35,7 +35,27 @@
 
   /* HERO */
   #home { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; overflow: hidden; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6rem 4rem 6rem 6rem; }
+
+  /* hero-left: now supports a faded sunset background image */
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    position: relative; overflow: hidden;
+  }
+  /* The sunset image layer — rendered behind all content */
+  .hero-left::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: var(--hero-bg, none);
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.22;
+    z-index: 0;
+    transition: opacity 0.6s ease;
+  }
+  /* Ensure all text + buttons sit above the image */
+  .hero-left > * { position: relative; z-index: 1; }
+
   .hero-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
   .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: 0.04em; color: var(--stone); opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
   .hero-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.75em; color: var(--rust); display: block; }
@@ -205,7 +225,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <span>Apex Stone & Tile</span>
+    <span>Apex Stone &amp; Tile</span>
     <span>Fernandina Beach, Florida</span>
   </div>
   <ul class="nav-links">
@@ -403,7 +423,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <span>Apex Stone & Tile</span>
+    <span>Apex Stone &amp; Tile</span>
     <span>Fernandina Beach, Florida</span>
   </div>
   <ul class="footer-links">
@@ -413,14 +433,14 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#inquiry">Contact</a></li>
   </ul>
-  <p class="footer-copy">© 2025 Apex Stone & Tile. All rights reserved.</p>
+  <p class="footer-copy">© 2025 Apex Stone &amp; Tile. All rights reserved.</p>
 </footer>
 
 <script>
-// ── Placeholder gradient colours for gallery items without images ──
+// ── Placeholder gradient colours for gallery items without images ──────────
 const gpClasses = ['gp-1','gp-2','gp-3','gp-4','gp-5'];
 
-// ── Fetch a JSON file, return parsed object or null ──
+// ── Fetch a JSON file, return parsed object or null ───────────────────────
 async function fetchJSON(path) {
   try {
     const r = await fetch(path);
@@ -429,13 +449,13 @@ async function fetchJSON(path) {
   } catch { return null; }
 }
 
-// ── Fetch all JSON files in a _data folder via a manifest ──
+// ── Fetch all JSON files in a _data folder via a manifest ─────────────────
 async function fetchFolder(files) {
   const results = await Promise.all(files.map(f => fetchJSON(f)));
   return results.filter(Boolean);
 }
 
-// ── HERO ──────────────────────────────────────────────────────────
+// ── HERO ──────────────────────────────────────────────────────────────────
 async function loadHero() {
   const d = await fetchJSON('/_data/hero.json');
   if (!d) return;
@@ -446,6 +466,12 @@ async function loadHero() {
 
   const title = document.getElementById('hero-title');
   title.innerHTML = `${d.title1}<br><em>${d.title2}</em><br>${d.title3}`;
+
+  // ── Sunset / hero background image (set "backgroundImage" in hero.json) ──
+  if (d.backgroundImage) {
+    document.querySelector('.hero-left')
+      .style.setProperty('--hero-bg', `url('${d.backgroundImage}')`);
+  }
 
   const mosaic = document.getElementById('hero-mosaic');
   const imgs   = d.images || {};
@@ -486,12 +512,12 @@ async function loadHero() {
     return div;
   };
 
-  mosaic.appendChild(makeTile(imgs.main,       'stone-bg-1', true,  imgs.label));
-  mosaic.appendChild(makeTile(imgs.topRight,   'stone-bg-2', false, ''));
-  mosaic.appendChild(makeTile(imgs.bottomRight,'stone-bg-3', false, ''));
+  mosaic.appendChild(makeTile(imgs.main,        'stone-bg-1', true,  imgs.label));
+  mosaic.appendChild(makeTile(imgs.topRight,    'stone-bg-2', false, ''));
+  mosaic.appendChild(makeTile(imgs.bottomRight, 'stone-bg-3', false, ''));
 }
 
-// ── STATS ─────────────────────────────────────────────────────────
+// ── STATS ─────────────────────────────────────────────────────────────────
 async function loadStats() {
   const d = await fetchJSON('/_data/stats.json');
   if (!d || !d.items) return;
@@ -511,9 +537,7 @@ async function loadStats() {
   });
 }
 
-// ── CONTENT MANIFEST ──────────────────────────────────────────────
-// Loaded once at boot; replaces hardcoded file lists so new CMS
-// entries are automatically included after the next Netlify deploy.
+// ── CONTENT MANIFEST ──────────────────────────────────────────────────────
 let _manifest = null;
 async function getManifest() {
   if (_manifest) return _manifest;
@@ -526,7 +550,7 @@ async function getManifest() {
   return _manifest;
 }
 
-// ── SERVICES ──────────────────────────────────────────────────────
+// ── SERVICES ──────────────────────────────────────────────────────────────
 async function loadServices() {
   const manifest = await getManifest();
   const all = await fetchFolder(manifest.services || []);
@@ -569,7 +593,7 @@ async function loadServices() {
   }
 }
 
-// ── GALLERY ───────────────────────────────────────────────────────
+// ── GALLERY ───────────────────────────────────────────────────────────────
 async function loadGallery() {
   const manifest = await getManifest();
   const all = await fetchFolder(manifest.gallery || []);
@@ -601,7 +625,7 @@ async function loadGallery() {
   });
 }
 
-// ── PROCESS ───────────────────────────────────────────────────────
+// ── PROCESS ───────────────────────────────────────────────────────────────
 async function loadProcess() {
   const d = await fetchJSON('/_data/process.json');
   if (!d || !d.steps) return;
@@ -618,7 +642,7 @@ async function loadProcess() {
   });
 }
 
-// ── ABOUT ─────────────────────────────────────────────────────────
+// ── ABOUT ─────────────────────────────────────────────────────────────────
 async function loadAbout() {
   const d = await fetchJSON('/_data/about.json');
   if (!d) return;
@@ -649,7 +673,7 @@ async function loadAbout() {
   });
 }
 
-// ── CONTACT ───────────────────────────────────────────────────────
+// ── CONTACT ───────────────────────────────────────────────────────────────
 async function loadContact() {
   const d = await fetchJSON('/_data/contact.json');
   if (!d) return;
@@ -660,7 +684,7 @@ async function loadContact() {
   document.getElementById('inquiry-desc').textContent    = d.inquiryDesc;
 }
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────────
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────
 function initReveal() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -675,7 +699,7 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// ── NAV HIGHLIGHT ────────────────────────────────────────────────
+// ── NAV HIGHLIGHT ─────────────────────────────────────────────────────────
 function initNav() {
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -691,7 +715,7 @@ function initNav() {
   });
 }
 
-// ── Netlify Identity redirect ────────────────────────────────────
+// ── Netlify Identity redirect ──────────────────────────────────────────────
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on('init', user => {
     if (!user) {
@@ -700,7 +724,7 @@ if (window.netlifyIdentity) {
   });
 }
 
-// ── BOOT ─────────────────────────────────────────────────────────
+// ── BOOT ──────────────────────────────────────────────────────────────────
 (async () => {
   await Promise.all([
     loadHero(), loadStats(), loadServices(),
