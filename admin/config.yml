@@ -22,6 +22,7 @@ collections:
           - { label: "Title Line 3", name: "title3", widget: "string", default: "Built to last." }
           - { label: "Description", name: "description", widget: "text", default: "From coastal kitchen backsplashes to full-floor marble transformations — Apex delivers precision tilework and natural stone installation tailored to your vision." }
           - { label: "Badge Text", name: "badge", widget: "string", default: "Licensed · Insured · Local Since 2009" }
+          - { label: "Hero Background Image (faded sunset)", name: "backgroundImage", widget: "image", required: false, hint: "Image that fades in behind the hero headline on page load. Leave blank for no background image." }
           - label: "Hero Images"
             name: "images"
             widget: "object"
