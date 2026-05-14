@@ -1573,7 +1573,9 @@
       const d = await fetchJSON('/_data/process.json');
       if (!d || !d.steps) return;
       const container = document.getElementById('process-steps');
-      container.style.gridTemplateColumns = `repeat(${d.steps.length}, 1fr)`;
+      if (window.innerWidth > 900) {
+        container.style.gridTemplateColumns = `repeat(${d.steps.length}, 1fr)`;
+      }
       container.innerHTML = '';
       d.steps.forEach((step, i) => {
         container.innerHTML += `
