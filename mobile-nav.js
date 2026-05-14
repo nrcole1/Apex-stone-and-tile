@@ -28,14 +28,14 @@
       position: fixed;
       inset: 0;
       background: rgba(44, 40, 37, 0.45);
-      z-index: 200;
+      z-index: 1001;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
     #mobile-drawer-backdrop.open {
       opacity: 1;
-      pointer-events: all;
+      pointer-events: auto;
     }
     #mobile-drawer {
       position: fixed;
@@ -45,7 +45,7 @@
       width: 72%;
       max-width: 320px;
       background: #2c2825;
-      z-index: 201;
+      z-index: 1002;
       transform: translateX(100%);
       transition: transform 0.3s ease;
       display: flex;
@@ -121,6 +121,7 @@
   drawer.id = 'mobile-drawer';
   drawer.setAttribute('role', 'dialog');
   drawer.setAttribute('aria-label', 'Navigation menu');
+  drawer.setAttribute('aria-modal', 'true');
   drawer.innerHTML = `
     <div class="drawer-accent"></div>
     <nav class="drawer-links" aria-label="Mobile navigation">
@@ -137,9 +138,11 @@
 
   // ── Inject hamburger into nav ────────────────────────────────────────────
   const nav = document.querySelector('nav');
+  if (!nav) return;
   const hamburger = document.createElement('button');
   hamburger.className = 'mobile-hamburger';
   hamburger.setAttribute('aria-label', 'Open navigation');
+  hamburger.setAttribute('aria-expanded', 'false');
   hamburger.innerHTML = '<span></span><span></span><span></span>';
   nav.appendChild(hamburger);
 
@@ -149,6 +152,7 @@
     backdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
     hamburger.setAttribute('aria-label', 'Close navigation');
+    hamburger.setAttribute('aria-expanded', 'true');
   }
 
   function closeDrawer() {
@@ -156,6 +160,7 @@
     backdrop.classList.remove('open');
     document.body.style.overflow = '';
     hamburger.setAttribute('aria-label', 'Open navigation');
+    hamburger.setAttribute('aria-expanded', 'false');
   }
 
   hamburger.addEventListener('click', () => {
