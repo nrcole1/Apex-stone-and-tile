@@ -1,1 +1,8 @@
-{ "title": "Master Bath Marble", "image": "", "category": "kitchen-bath", "tag": "Marble / Residential", "order": 1, "featured": true }
+{
+  "title": "Master Bath Marble",
+  "image": "/images/uploads/20231109_084658-teria.jpg",
+  "category": "kitchen-bath",
+  "tag": "Marble / Residential",
+  "order": 1,
+  "featured": true
+}
