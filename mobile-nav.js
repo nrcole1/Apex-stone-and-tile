@@ -181,13 +181,13 @@
       </button>
     </div>
     <div class="drawer-accent"></div>
-    <nav class="drawer-links" aria-label="Mobile navigation">
+    <div class="drawer-links" role="navigation" aria-label="Mobile navigation">
       <a href="index.html" class="drawer-link${!isGallery ? ' active' : ''}">Home</a>
       <a href="index.html#services" class="drawer-link">Services</a>
       <a href="gallery.html" class="drawer-link${isGallery ? ' active' : ''}">Gallery</a>
       <a href="index.html#about" class="drawer-link">About</a>
       <a href="index.html#inquiry" class="drawer-link">Contact</a>
-    </nav>
+    </div>
     <div class="drawer-cta">
       <a href="index.html#inquiry">Get a Quote</a>
     </div>
