@@ -1,1 +1,8 @@
-{ "title": "Kitchen Backsplash", "image": "", "category": "kitchen-bath", "tag": "Backsplash / Custom", "order": 3, "featured": false }
+{
+  "title": "Kitchen Backsplash",
+  "image": "/images/uploads/backsplash-work-homescreen.jpg",
+  "category": "kitchen-bath",
+  "tag": "Backsplash / Custom",
+  "order": 3,
+  "featured": false
+}
