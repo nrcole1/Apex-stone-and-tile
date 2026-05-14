@@ -27,8 +27,8 @@
     #mobile-drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(44, 40, 37, 0.45);
-      z-index: 1001;
+      background: rgba(44, 40, 37, 0.55);
+      z-index: 9998;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -42,25 +42,70 @@
       top: 0;
       right: 0;
       bottom: 0;
-      width: 72%;
-      max-width: 320px;
+      width: 78%;
+      max-width: 340px;
       background: #2c2825;
-      z-index: 1002;
+      z-index: 9999;
       transform: translateX(100%);
       transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
-      padding: 1.5rem;
+      padding: 1.25rem 1.5rem 1.5rem;
+      box-shadow: -8px 0 24px rgba(0, 0, 0, 0.25);
     }
     #mobile-drawer.open {
       transform: translateX(0);
     }
+    /* Hide the main nav while the drawer is open so the cream nav
+       doesn't bleed over the top of the dark drawer */
+    body.drawer-open nav { visibility: hidden; }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+    .drawer-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .drawer-brand span:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      color: #fdfaf7;
+    }
+    .drawer-brand span:last-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: #b89a6a;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e8e0d5;
+      transition: color 0.2s;
+    }
+    .drawer-close:hover { color: #b89a6a; }
+    .drawer-close svg { width: 18px; height: 18px; }
+
     .drawer-accent {
       width: 32px;
       height: 2px;
       background: #8b4a2b;
-      margin-bottom: 2rem;
-      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
       flex-shrink: 0;
     }
     .drawer-links {
@@ -71,10 +116,10 @@
     .drawer-link {
       display: block;
       text-decoration: none;
-      padding: 0.9rem 0;
+      padding: 1rem 0;
       border-bottom: 1px solid rgba(201, 185, 154, 0.12);
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -94,9 +139,9 @@
       text-align: center;
       background: #8b4a2b;
       color: #fdfaf7;
-      padding: 0.8rem 1rem;
+      padding: 0.9rem 1rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -123,6 +168,18 @@
   drawer.setAttribute('aria-label', 'Navigation menu');
   drawer.setAttribute('aria-modal', 'true');
   drawer.innerHTML = `
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <span>Apex Stone &amp; Tile</span>
+        <span>Fernandina Beach</span>
+      </div>
+      <button class="drawer-close" type="button" aria-label="Close navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
     <div class="drawer-accent"></div>
     <nav class="drawer-links" aria-label="Mobile navigation">
       <a href="index.html" class="drawer-link${!isGallery ? ' active' : ''}">Home</a>
@@ -146,10 +203,14 @@
   hamburger.innerHTML = '<span></span><span></span><span></span>';
   nav.appendChild(hamburger);
 
+  const closeBtn = drawer.querySelector('.drawer-close');
+  const drawerLinks = drawer.querySelectorAll('.drawer-link, .drawer-cta a');
+
   // ── Open / close logic ───────────────────────────────────────────────────
   function openDrawer() {
     drawer.classList.add('open');
     backdrop.classList.add('open');
+    document.body.classList.add('drawer-open');
     document.body.style.overflow = 'hidden';
     hamburger.setAttribute('aria-label', 'Close navigation');
     hamburger.setAttribute('aria-expanded', 'true');
@@ -158,6 +219,7 @@
   function closeDrawer() {
     drawer.classList.remove('open');
     backdrop.classList.remove('open');
+    document.body.classList.remove('drawer-open');
     document.body.style.overflow = '';
     hamburger.setAttribute('aria-label', 'Open navigation');
     hamburger.setAttribute('aria-expanded', 'false');
@@ -167,7 +229,13 @@
     drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 
+  closeBtn.addEventListener('click', closeDrawer);
   backdrop.addEventListener('click', closeDrawer);
+
+  // Close after tapping any link so the next section is visible
+  drawerLinks.forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDrawer();
