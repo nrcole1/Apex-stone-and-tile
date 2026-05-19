@@ -6,7 +6,7 @@ Max width: 1800px, quality: 82
 """
 import os
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 
 SRC = Path(r"C:\Users\nrcol\Dropbox\File requests\Apex stone and tile website pictures")
 DST = Path(r"C:\Users\nrcol\OneDrive\Desktop\apex-site-cms\apex-site\images\uploads\gallery")
@@ -65,6 +65,7 @@ for i, (src_name, stem, title, cat, tag, featured) in enumerate(PHOTOS, 1):
         continue
 
     img = Image.open(src_path)
+    img = ImageOps.exif_transpose(img)  # apply EXIF rotation before anything else
     if img.mode in ("RGBA", "P"):
         img = img.convert("RGB")
 
