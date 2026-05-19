@@ -1,8 +1,8 @@
 {
-  "title": "Custom Tile Shower",
+  "title": "Stacked Stone Fireplace",
   "image": "/images/uploads/gallery/shower-tile-enclosure.webp",
-  "category": "kitchen-bath",
-  "tag": "Shower / Tile",
-  "order": 36,
+  "category": "fireplace",
+  "tag": "Fireplace / Stone",
+  "order": 37,
   "featured": false
 }

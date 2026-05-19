@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Commercial Tile Floor",
-    "image":  "/images/uploads/gallery/commercial-tile-floor-01.webp",
-    "category":  "commercial",
-    "tag":  "Commercial / Tile",
-    "order":  4,
-    "featured":  false
+{
+  "title": "Commercial Tile Floor",
+  "image": "/images/uploads/gallery/commercial-tile-floor-01.webp",
+  "category": "commercial",
+  "tag": "Commercial / Tile",
+  "order": 4,
+  "featured": false
 }

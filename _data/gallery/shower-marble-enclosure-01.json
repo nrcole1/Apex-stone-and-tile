@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Marble Shower Enclosure",
-    "image":  "/images/uploads/gallery/shower-marble-enclosure-01.webp",
-    "category":  "natural-stone",
-    "tag":  "Shower / Marble",
-    "order":  30,
-    "featured":  false
+{
+  "title": "Marble Walk-In Shower",
+  "image": "/images/uploads/gallery/shower-marble-enclosure-01.webp",
+  "category": "natural-stone",
+  "tag": "Shower / Marble",
+  "order": 32,
+  "featured": false
 }

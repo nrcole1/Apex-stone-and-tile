@@ -1,8 +1,8 @@
 {
-  "title": "Custom Shower Tile",
+  "title": "Herringbone Brick-Look Floor",
   "image": "/images/uploads/gallery/bathroom-tile-shower-01.webp",
-  "category": "kitchen-bath",
-  "tag": "Shower / Tile",
-  "order": 9,
+  "category": "flooring",
+  "tag": "Floor / Brick Look",
+  "order": 17,
   "featured": false
 }
