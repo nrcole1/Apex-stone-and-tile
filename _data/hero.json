@@ -1,15 +1,15 @@
 {
-  "eyebrow": "Custom Stonework \u00b7 Fernandina Beach, FL",
+  "eyebrow": "Custom Stonework · Fernandina Beach, FL",
   "title1": "Crafted",
   "title2": "in stone.",
   "title3": "Built to last.",
-  "description": "From coastal kitchen backsplashes to full-floor marble transformations \u2014 we deliver precision tilework and natural stone installation tailored to your vision.",
-  "badge": "Licensed \u00b7 Insured \u00b7 Local Since 2009",
+  "description": "From coastal kitchen backsplashes to full-floor marble transformations — we deliver precision tilework and natural stone installation tailored to your vision.",
+  "badge": "Licensed · Insured · Local Since 2009",
   "backgroundImage": "/images/uploads/sunset.png",
   "images": {
-    "main": "/images/uploads/gallery/stone-shower-enclosure.jpg",
-    "topRight": "/images/uploads/gallery/wood-look-porcelain-living-area.jpg",
-    "bottomRight": "/images/uploads/gallery/arrow-mosaic-backsplash.jpg",
+    "main": "/images/uploads/niche-work-2.jpg",
+    "topRight": "/images/uploads/topofwebsite.jpg",
+    "bottomRight": "/images/uploads/toppicture-shower-wall-floor.jpg",
     "label": "Custom tile and stonework"
   }
 }
