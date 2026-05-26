@@ -1,1 +1,8 @@
-{ "title": "Shower Feature Wall", "image": "", "category": "mosaic", "tag": "Mosaic / Residential", "order": 5, "featured": false }
+{
+  "title": "Marble Tile Kitchen Wall",
+  "image": "/images/uploads/gallery/marble-tile-kitchen-wall.jpg",
+  "category": "kitchen-bath",
+  "tag": "Kitchen & Bath",
+  "order": 6,
+  "featured": false
+}

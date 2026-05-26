@@ -1,1 +1,8 @@
-{ "name": "Custom Mosaic & Inlay",     "icon": "✨", "description": "One-of-a-kind feature walls, medallion inlays, and decorative mosaic work. Bespoke designs that make your space genuinely unforgettable.", "order": 4, "active": true, "cardImage": "" }
+{
+  "name": "Custom Mosaic & Inlay",
+  "icon": "\u2728",
+  "description": "One-of-a-kind feature walls, medallion inlays, and decorative mosaic work. Bespoke designs that make your space genuinely unforgettable.",
+  "order": 4,
+  "active": true,
+  "cardImage": "/images/uploads/gallery/geometric-mosaic-floor.jpg"
+}

@@ -1131,7 +1131,7 @@
       }
 
       .services-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
       }
 
@@ -1201,6 +1201,170 @@
         gap: 1.5rem;
         text-align: center;
       }
+
+      #testimonials {
+        padding: 5rem 2rem;
+      }
+
+      .testimonials-stage {
+        min-height: 360px;
+      }
+
+      .carousel-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .testimonials-carousel {
+        gap: 0.75rem;
+      }
+    }
+
+    /* ── TESTIMONIALS ─────────────────────────────────────── */
+    #testimonials {
+      background: var(--stone);
+      padding: 7rem 6rem;
+    }
+
+    .testimonials-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #testimonials .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    #testimonials .section-eyebrow {
+      color: var(--gold);
+    }
+
+    .testimonials-carousel {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .testimonials-stage {
+      flex: 1;
+      position: relative;
+      min-height: 280px;
+    }
+
+    .testimonial-card {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .testimonial-card.active {
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+    }
+
+    .testimonial-quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.4;
+      margin-bottom: -1.5rem;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(232, 224, 213, 0.9);
+      font-weight: 300;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .testimonial-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .testimonial-project {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--travertine);
+      text-transform: uppercase;
+    }
+
+    .carousel-btn {
+      background: transparent;
+      border: 1.5px solid var(--travertine);
+      color: var(--sand);
+      width: 44px;
+      height: 44px;
+      border-radius: 2px;
+      font-size: 1rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+
+    .carousel-btn:hover {
+      background: var(--rust);
+      border-color: var(--rust);
+      color: var(--white);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--slate);
+      border: 1.5px solid var(--travertine);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: scale(1.3);
     }
   </style>
 </head>
@@ -1314,6 +1478,105 @@
       <div class="about-features" id="about-features">
         <!-- populated by JS -->
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testimonials-inner">
+      <div class="section-header reveal" style="justify-content:center;">
+        <div>
+          <p class="section-eyebrow">Client Stories</p>
+          <h2 class="section-title" style="color:var(--sand);">What Our <em>Clients</em> Say</h2>
+        </div>
+      </div>
+
+      <div class="testimonials-carousel reveal">
+        <button class="carousel-btn carousel-prev" aria-label="Previous">&#8592;</button>
+
+        <div class="testimonials-stage">
+
+          <!-- CARD 1 — replace with real testimonial from Richard -->
+          <div class="testimonial-card active">
+            <div class="testimonial-quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              Apex completely transformed our kitchen. The backsplash they installed is stunning —
+              the craftsmanship and attention to detail exceeded every expectation. Richard walked
+              us through every material option and stayed on schedule from start to finish.
+            </p>
+            <div class="testimonial-author">
+              <span class="testimonial-name">Sarah M.</span>
+              <span class="testimonial-project">Kitchen Backsplash &middot; Yulee, FL</span>
+            </div>
+          </div>
+
+          <!-- CARD 2 — replace with real testimonial from Richard -->
+          <div class="testimonial-card">
+            <div class="testimonial-quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              Our master bath renovation turned out beyond beautiful. Every tile is perfectly
+              aligned, the shower niche is flawlessly finished, and the whole process was seamless.
+              We've already referred two neighbors to Apex.
+            </p>
+            <div class="testimonial-author">
+              <span class="testimonial-name">James &amp; Patricia K.</span>
+              <span class="testimonial-project">Master Bath Remodel &middot; Fernandina Beach, FL</span>
+            </div>
+          </div>
+
+          <!-- CARD 3 — replace with real testimonial from Richard -->
+          <div class="testimonial-card">
+            <div class="testimonial-quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              We had large-format wood-look tile installed throughout the main floor. Richard's
+              team handled the leveling perfectly — not a single lippage issue across 1,200 square
+              feet. Professional, clean, and done exactly on time.
+            </p>
+            <div class="testimonial-author">
+              <span class="testimonial-name">David R.</span>
+              <span class="testimonial-project">Hardwood-Look Tile Flooring &middot; Amelia Island, FL</span>
+            </div>
+          </div>
+
+          <!-- CARD 4 — replace with real testimonial from Richard -->
+          <div class="testimonial-card">
+            <div class="testimonial-quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              Our outdoor patio and pool coping look like they belong in a magazine. Apex sourced
+              exactly the travertine we envisioned and the installation held up beautifully through
+              our first Florida summer.
+            </p>
+            <div class="testimonial-author">
+              <span class="testimonial-name">The Henderson Family</span>
+              <span class="testimonial-project">Outdoor Patio &amp; Pool Coping &middot; Hilliard, FL</span>
+            </div>
+          </div>
+
+          <!-- CARD 5 — replace with real testimonial from Richard -->
+          <div class="testimonial-card">
+            <div class="testimonial-quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              We contracted Apex for our restaurant lobby renovation and the results are spectacular.
+              The team worked around our operating hours, kept the site clean daily, and delivered
+              a polished marble floor that impresses every guest who walks in.
+            </p>
+            <div class="testimonial-author">
+              <span class="testimonial-name">Mark T.</span>
+              <span class="testimonial-project">Commercial Lobby &middot; Jacksonville, FL</span>
+            </div>
+          </div>
+
+        </div><!-- /.testimonials-stage -->
+
+        <button class="carousel-btn carousel-next" aria-label="Next">&#8594;</button>
+      </div><!-- /.testimonials-carousel -->
+
+      <div class="carousel-dots" id="testimonial-dots"></div>
     </div>
   </section>
 
@@ -1674,6 +1937,49 @@
       document.getElementById('inquiry-desc').textContent = d.inquiryDesc;
     }
 
+    // ── TESTIMONIALS CAROUSEL ─────────────────────────────────────────────────
+    function initTestimonialsCarousel() {
+      const cards = document.querySelectorAll('.testimonial-card');
+      const dotsContainer = document.getElementById('testimonial-dots');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      let current = 0;
+      let timer;
+
+      cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+        dot.addEventListener('click', () => { stopTimer(); goTo(i); startTimer(); });
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        cards[current].classList.remove('active');
+        dotsContainer.children[current].classList.remove('active');
+        current = (index + cards.length) % cards.length;
+        cards[current].classList.add('active');
+        dotsContainer.children[current].classList.add('active');
+      }
+
+      function startTimer() {
+        timer = setInterval(() => goTo(current + 1), 5000);
+      }
+
+      function stopTimer() {
+        clearInterval(timer);
+      }
+
+      prevBtn.addEventListener('click', () => { stopTimer(); goTo(current - 1); startTimer(); });
+      nextBtn.addEventListener('click', () => { stopTimer(); goTo(current + 1); startTimer(); });
+
+      const carousel = document.querySelector('.testimonials-carousel');
+      carousel.addEventListener('mouseenter', stopTimer);
+      carousel.addEventListener('mouseleave', startTimer);
+
+      startTimer();
+    }
+
     // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
     function initReveal() {
       const observer = new IntersectionObserver(entries => {
@@ -1723,6 +2029,7 @@
       // Re-observe after dynamic content is added
       initReveal();
       initNav();
+      initTestimonialsCarousel();
     })();
   </script>
   <script src="mobile-nav.js"></script>

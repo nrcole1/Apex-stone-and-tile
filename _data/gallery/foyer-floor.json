@@ -1,1 +1,8 @@
-{ "title": "Foyer Floor", "image": "", "category": "stone-flooring", "tag": "Travertine / Inlay", "order": 4, "featured": false }
+{
+  "title": "Patterned Ceramic Kitchen Backsplash",
+  "image": "/images/uploads/gallery/patterned-ceramic-kitchen-backsplash.jpg",
+  "category": "kitchen-bath",
+  "tag": "Kitchen Backsplash",
+  "order": 2,
+  "featured": true
+}

@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Natural Stone Shower",
-    "image":  "/images/uploads/gallery/shower-stone-enclosure.webp",
-    "category":  "natural-stone",
-    "tag":  "Shower / Stone",
-    "order":  35,
-    "featured":  false
+{
+  "title": "Calacatta Large Panel",
+  "image": "/images/uploads/gallery/shower-stone-enclosure.webp",
+  "category": "natural-stone",
+  "tag": "Shower / Calacatta",
+  "order": 37,
+  "featured": false
 }
