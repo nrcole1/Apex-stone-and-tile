@@ -1131,7 +1131,7 @@
       }
 
       .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
       }
 
@@ -1549,10 +1549,6 @@
 
       const grid = document.getElementById('services-grid');
       grid.innerHTML = '';
-
-      // Fix grid columns based on count
-      const cols = active.length <= 4 ? 2 : 3;
-      grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
       active.forEach((s, i) => {
         const card = document.createElement('div');
