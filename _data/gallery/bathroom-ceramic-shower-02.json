@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Ceramic Shower Surround",
-    "image":  "/images/uploads/gallery/bathroom-ceramic-shower-02.webp",
-    "category":  "kitchen-bath",
-    "tag":  "Shower / Ceramic",
-    "order":  3,
-    "featured":  false
+{
+  "title": "Black Hexagon Mosaic Tub Surround",
+  "image": "/images/uploads/gallery/bathroom-ceramic-shower-02.webp",
+  "category": "custom-mosaic",
+  "tag": "Bath / Mosaic",
+  "order": 14,
+  "featured": false
 }

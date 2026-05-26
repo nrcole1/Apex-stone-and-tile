@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Wide Plank Porcelain Floor",
-    "image":  "/images/uploads/gallery/floor-woodlook-porcelain-02.webp",
-    "category":  "flooring",
-    "tag":  "Floor / Wood Look",
-    "order":  2,
-    "featured":  false
+{
+  "title": "Wide Plank Wood-Look Floor",
+  "image": "/images/uploads/gallery/floor-woodlook-porcelain-02.webp",
+  "category": "flooring",
+  "tag": "Floor / Wood Look",
+  "order": 2,
+  "featured": false
 }

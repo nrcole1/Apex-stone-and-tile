@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Geometric Ceramic Floor",
-    "image":  "/images/uploads/gallery/floor-ceramic-geometric-01.webp",
-    "category":  "flooring",
-    "tag":  "Floor / Ceramic",
-    "order":  16,
-    "featured":  false
+{
+  "title": "Geometric Pattern Tile",
+  "image": "/images/uploads/gallery/floor-ceramic-geometric-01.webp",
+  "category": "flooring",
+  "tag": "Floor / Patterned",
+  "order": 21,
+  "featured": false
 }

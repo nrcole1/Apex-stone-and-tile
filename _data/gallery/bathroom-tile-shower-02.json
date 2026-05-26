@@ -1,8 +1,8 @@
-﻿{
-    "title":  "Shower Tile Enclosure",
-    "image":  "/images/uploads/gallery/bathroom-tile-shower-02.webp",
-    "category":  "kitchen-bath",
-    "tag":  "Shower / Tile",
-    "order":  10,
-    "featured":  false
+{
+  "title": "Marble Walk-In Shower with Bench",
+  "image": "/images/uploads/gallery/bathroom-tile-shower-02.webp",
+  "category": "natural-stone",
+  "tag": "Shower / Marble",
+  "order": 9,
+  "featured": false
 }
