@@ -1,1 +1,8 @@
-{ "name": "LVP & Engineered Hardwood", "icon": "🪵", "description": "Luxury vinyl plank and engineered hardwood installation for living areas, bedrooms, and commercial spaces. Durable, beautiful, and built to last.", "order": 7, "active": true, "cardImage": "" }
+{
+  "name": "LVP & Engineered Hardwood",
+  "icon": "\ud83e\udeb5",
+  "description": "Luxury vinyl plank and engineered hardwood installation for living areas, bedrooms, and commercial spaces. Durable, beautiful, and built to last.",
+  "order": 7,
+  "active": true,
+  "cardImage": "/images/uploads/gallery/wood-look-porcelain-living-area.jpg"
+}

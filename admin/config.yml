@@ -88,6 +88,8 @@ collections:
     folder: "_data/services"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     identifier_field: "name"
     fields:
       - { label: "Service Name", name: "name", widget: "string" }

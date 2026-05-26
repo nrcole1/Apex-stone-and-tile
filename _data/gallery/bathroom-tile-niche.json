@@ -1,1 +1,8 @@
-{ "title": "Bathroom tile niche", "image": "/images/uploads/bathroomwall-withniche.jpg", "category": "kitchen-bath", "tag": "Residential", "order": 1, "featured": true }
+{
+  "title": "Arrow Mosaic Backsplash",
+  "image": "/images/uploads/gallery/arrow-mosaic-backsplash.jpg",
+  "category": "kitchen-bath",
+  "tag": "Kitchen Backsplash",
+  "order": 1,
+  "featured": true
+}

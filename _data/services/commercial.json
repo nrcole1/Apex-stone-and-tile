@@ -1,1 +1,8 @@
-{ "name": "Commercial Installations",  "icon": "🏗️", "description": "Hotels, restaurants, retail — high-traffic commercial stonework that stands up to the demand and maintains its elegance for years.", "order": 5, "active": true, "cardImage": "" }
+{
+  "name": "Commercial Installations",
+  "icon": "\ud83c\udfd7\ufe0f",
+  "description": "Hotels, restaurants, retail \u2014 high-traffic commercial stonework that stands up to the demand and maintains its elegance for years.",
+  "order": 5,
+  "active": true,
+  "cardImage": "/images/uploads/gallery/commercial-tile-floor.jpg"
+}
