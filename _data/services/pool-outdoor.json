@@ -1,1 +1,8 @@
-{ "name": "Outdoor & Other",      "icon": "🌊", "description": "Coastal-grade stone and porcelain that handles Florida's salt air and sun. Patios, pool surrounds, outdoor kitchens — built for the elements.", "order": 3, "active": true, "cardImage": "" }
+{
+  "name": "Outdoor & Other",
+  "icon": "\ud83c\udf0a",
+  "description": "Coastal-grade stone and porcelain that handles Florida's salt air and sun. Patios, pool surrounds, outdoor kitchens \u2014 built for the elements.",
+  "order": 3,
+  "active": true,
+  "cardImage": "/images/uploads/gallery/exterior-tile-and-stone-entry.jpg"
+}

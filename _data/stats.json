@@ -1,20 +1,8 @@
 {
   "items": [
-    {
-      "num": "500+",
-      "label": "Projects Completed"
-    },
-    {
-      "num": "42+",
-      "label": "Years in Business"
-    },
-    {
-      "num": "100%",
-      "label": "Custom Work"
-    },
-    {
-      "num": "5★",
-      "label": "Avg. Review Rating"
-    }
+    { "num": "500+", "label": "Projects Completed" },
+    { "num": "42+",  "label": "Years in Business" },
+    { "num": "100%", "label": "Custom Work" },
+    { "num": "5★",   "label": "Avg. Review Rating" }
   ]
 }
