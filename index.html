@@ -186,18 +186,9 @@
       background-image: var(--hero-bg, none);
       background-size: cover;
       background-position: center center;
-      opacity: 0.70;
+      opacity: 0.50;
       z-index: 0;
       transition: opacity 0.6s ease;
-    }
-
-    /* Directional scrim so left-side text stays readable */
-    .hero-left::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(44,40,37,0.80) 0%, rgba(44,40,37,0.35) 65%, transparent 100%);
-      z-index: 0;
     }
 
     /* Ensure all text + buttons sit above the image */
@@ -219,7 +210,7 @@
 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4.5rem, 9vw, 9rem);
+      font-size: clamp(4rem, 7vw, 6.5rem);
       line-height: 0.95;
       letter-spacing: 0.04em;
       color: var(--stone);
