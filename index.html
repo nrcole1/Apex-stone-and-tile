@@ -728,15 +728,6 @@
       position: relative;
     }
 
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 2.2rem;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: rgba(201, 185, 154, 0.2);
-    }
 
     .process-step {
       padding: 0 2rem;
@@ -982,9 +973,11 @@
       margin-bottom: 0.5rem;
     }
 
-    .form-subtitle {
-      font-size: 0.82rem;
-      color: var(--travertine);
+    .response-commitment {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--rust);
       margin-bottom: 2rem;
       font-style: italic;
     }
@@ -1062,6 +1055,87 @@
     .submit-btn:hover {
       background: var(--rust);
       transform: translateY(-1px);
+    }
+
+    /* SERVICE AREA */
+    .service-area {
+      background: var(--cream);
+      padding: 5rem 6rem;
+      text-align: center;
+    }
+
+    .service-area .section-eyebrow {
+      margin-bottom: 0.75rem;
+    }
+
+    .service-area-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      letter-spacing: 0.04em;
+      color: var(--stone);
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .service-area-title em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--rust);
+    }
+
+    .service-area-cities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .service-area-city {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--slate);
+      position: relative;
+    }
+
+    .service-area-city:not(:last-child)::after {
+      content: '·';
+      position: absolute;
+      right: -0.9rem;
+      color: var(--travertine);
+    }
+
+    .service-area-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--slate);
+    }
+
+    .service-area-note a {
+      color: var(--rust);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--travertine);
+      transition: border-color 0.2s;
+    }
+
+    .service-area-note a:hover {
+      border-color: var(--rust);
+    }
+
+    @media (max-width: 900px) {
+      .service-area {
+        padding: 3.5rem 1.5rem;
+      }
+      .service-area-cities {
+        gap: 0.5rem 1.5rem;
+      }
+      .service-area-city {
+        font-size: 1.2rem;
+      }
     }
 
     /* FOOTER */
@@ -1435,8 +1509,8 @@
   <div class="process-section">
     <div class="section-header reveal" style="justify-content:flex-start;">
       <div>
-        <p class="section-eyebrow">How It Works</p>
-        <h2 class="section-title">Simple <em>Process</em></h2>
+        <p class="section-eyebrow">Why Apex</p>
+        <h2 class="section-title">The Apex <em>Difference</em></h2>
       </div>
     </div>
     <div class="process-steps reveal" id="process-steps">
@@ -1506,7 +1580,7 @@
     </div>
     <div class="inquiry-form reveal">
       <h3 class="form-title">Request a Free Quote</h3>
-      <p class="form-subtitle">We typically respond within 24 hours.</p>
+      <p class="response-commitment">Free on-site consultation — no obligation.<br>We respond within 1 business day.</p>
       <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact" />
         <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
@@ -1538,18 +1612,6 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Approximate Square Footage</label>
-          <select name="sqft">
-            <option value="">Select a range...</option>
-            <option>Under 100 sq ft</option>
-            <option>100–300 sq ft</option>
-            <option>300–600 sq ft</option>
-            <option>600–1,000 sq ft</option>
-            <option>1,000+ sq ft</option>
-            <option>Not Sure</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label>Tell Us About Your Project</label>
           <textarea name="message"
             placeholder="Describe your space, your vision, any materials you have in mind, or any questions you have..."></textarea>
@@ -1557,6 +1619,21 @@
         <button type="submit" class="submit-btn">Submit Quote Request →</button>
       </form>
     </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="service-area reveal">
+    <p class="section-eyebrow">Service Area</p>
+    <h2 class="service-area-title">Serving Nassau County <em>&amp; Beyond</em></h2>
+    <div class="service-area-cities">
+      <span class="service-area-city">Fernandina Beach</span>
+      <span class="service-area-city">Amelia Island</span>
+      <span class="service-area-city">Yulee</span>
+      <span class="service-area-city">Callahan</span>
+      <span class="service-area-city">Hilliard</span>
+      <span class="service-area-city">Jacksonville (North)</span>
+    </div>
+    <p class="service-area-note">Not sure if we cover your area? <a href="tel:+19048870068">Give us a call.</a></p>
   </section>
 
   <!-- FOOTER -->

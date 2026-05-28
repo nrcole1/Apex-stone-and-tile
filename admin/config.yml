@@ -70,11 +70,11 @@ collections:
           - { label: "Hours", name: "hours", widget: "string", default: "Mon–Fri · 7am – 6pm" }
           - { label: "Inquiry Description", name: "inquiryDesc", widget: "text", default: "Tell us about your space and what you're envisioning. We'll get back to you within one business day to schedule your free consultation." }
 
-      - label: "Process Steps"
+      - label: "Why Apex"
         name: "process"
         file: "_data/process.json"
         fields:
-          - label: "Steps"
+          - label: "Differentiators"
             name: "steps"
             widget: "list"
             fields:
