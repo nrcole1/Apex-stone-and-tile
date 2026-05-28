@@ -7,9 +7,9 @@
   "badge": "Licensed · Insured · Local Since 2009",
   "backgroundImage": "/images/uploads/sunset.png",
   "images": {
-    "main": "/images/uploads/niche-work-2.jpg",
-    "topRight": "/images/uploads/topofwebsite.jpg",
-    "bottomRight": "/images/uploads/toppicture-shower-wall-floor.jpg",
+    "main": "/images/uploads/gallery/shower-stone-enclosure.webp",
+    "topRight": "/images/uploads/gallery/floor-woodlook-porcelain-02.webp",
+    "bottomRight": "/images/uploads/gallery/kitchen-mosaic-backsplash-01.webp",
     "label": "Custom tile and stonework"
   }
 }

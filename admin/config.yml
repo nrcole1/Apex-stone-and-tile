@@ -57,7 +57,7 @@ collections:
             field: { label: "Feature", name: "text", widget: "string" }
           - { label: "About Main Image", name: "mainImage", widget: "image", required: false }
           - { label: "About Accent Image", name: "accentImage", widget: "image", required: false }
-          - { label: "Years Badge Number", name: "yearsNum", widget: "string", default: "15+" }
+          - { label: "Years Badge Number", name: "yearsNum", widget: "string", default: "42+" }
           - { label: "Years Badge Label", name: "yearsLabel", widget: "string", default: "Years of Craft" }
 
       - label: "Contact Info"
@@ -65,9 +65,9 @@ collections:
         file: "_data/contact.json"
         fields:
           - { label: "Address", name: "address", widget: "string", default: "Fernandina Beach, FL 32034" }
-          - { label: "Phone", name: "phone", widget: "string", default: "(904) 555-0198" }
-          - { label: "Email", name: "email", widget: "string", default: "info@apexstoneandtile.com" }
-          - { label: "Hours", name: "hours", widget: "string", default: "Mon–Sat · 7am – 6pm" }
+          - { label: "Phone", name: "phone", widget: "string", default: "(904) 887-0068" }
+          - { label: "Email", name: "email", widget: "string", default: "apexstonetile@yahoo.com" }
+          - { label: "Hours", name: "hours", widget: "string", default: "Mon–Fri · 7am – 6pm" }
           - { label: "Inquiry Description", name: "inquiryDesc", widget: "text", default: "Tell us about your space and what you're envisioning. We'll get back to you within one business day to schedule your free consultation." }
 
       - label: "Process Steps"

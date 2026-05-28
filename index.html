@@ -4,7 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Stone &amp; Tile — Fernandina Beach, FL</title>
+  <title>Apex Stone &amp; Tile | Tile &amp; Stone Installation — Fernandina Beach, FL</title>
+  <meta name="description" content="Expert tile and stone installation in Fernandina Beach, FL. Kitchen backsplashes, marble showers, natural stone flooring &amp; more. Licensed &amp; insured. Free estimates.">
+  <meta property="og:title" content="Apex Stone &amp; Tile — Fernandina Beach, FL">
+  <meta property="og:description" content="Custom stone and tile installation serving Nassau County. Kitchens, baths, flooring, and commercial. Free on-site estimates.">
+  <meta property="og:image" content="/images/uploads/gallery/shower-stone-enclosure.webp">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://apexstoneandtile.netlify.app/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Apex Stone & Tile",
+    "url": "https://apexstoneandtile.netlify.app",
+    "telephone": "(904) 887-0068",
+    "email": "apexstonetile@yahoo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Fernandina Beach",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.6694,
+      "longitude": -81.4626
+    },
+    "areaServed": [
+      "Fernandina Beach", "Amelia Island", "Yulee", "Callahan",
+      "Nassau County", "Duval County"
+    ],
+    "priceRange": "$$",
+    "description": "Custom stone and tile installation serving Nassau County and surrounding areas.",
+    "foundingDate": "2009"
+  }
+  </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -105,6 +140,23 @@
 
     .nav-cta:hover {
       background: var(--rust) !important;
+    }
+
+    .nav-phone {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--slate);
+      transition: color 0.2s;
+    }
+
+    .nav-phone:hover {
+      color: var(--rust);
+    }
+
+    @media (max-width: 900px) {
+      .nav-phone { display: none; }
     }
 
     /* HERO */
@@ -1048,6 +1100,19 @@
       letter-spacing: 0.08em;
     }
 
+    .footer-phone {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--travertine);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-phone:hover {
+      color: var(--gold);
+    }
+
     /* ANIMATIONS */
     @keyframes fadeUp {
       from {
@@ -1217,9 +1282,11 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#inquiry" class="nav-cta">Get a Quote</a></li>
+      <li><a href="#inquiry" class="nav-cta">Get a Free Quote</a></li>
     </ul>
+    <a href="tel:+19048870068" class="nav-phone">(904) 887-0068</a>
   </nav>
 
   <!-- HERO -->
@@ -1229,7 +1296,7 @@
       <h1 class="hero-title" id="hero-title"></h1>
       <p class="hero-desc" id="hero-desc"></p>
       <div class="hero-actions">
-        <a href="#inquiry" class="btn-primary">Request a Quote</a>
+        <a href="#inquiry" class="btn-primary">Request a Free Estimate</a>
         <a href="gallery.html" class="btn-secondary">View Our Work</a>
       </div>
       <div class="hero-badge">
@@ -1358,8 +1425,9 @@
     <div class="inquiry-form reveal">
       <h3 class="form-title">Request a Free Quote</h3>
       <p class="form-subtitle">We typically respond within 24 hours.</p>
-      <form name="contact" method="POST" data-netlify="true">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <div class="form-row">
           <div class="form-group">
             <label>First Name</label>
@@ -1423,6 +1491,7 @@
       <li><a href="#inquiry">Contact</a></li>
     </ul>
     <p class="footer-copy">© 2025 Apex Stone &amp; Tile. All rights reserved.</p>
+    <a href="tel:+19048870068" class="footer-phone">(904) 887-0068</a>
   </footer>
 
   <script>
