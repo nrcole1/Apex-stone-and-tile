@@ -1451,9 +1451,9 @@
   <!-- HERO -->
   <section id="home">
     <div class="hero-left">
-      <p class="hero-eyebrow" id="hero-eyebrow"></p>
-      <h1 class="hero-title" id="hero-title"></h1>
-      <p class="hero-desc" id="hero-desc"></p>
+      <p class="hero-eyebrow" id="hero-eyebrow">Custom Stonework · Fernandina Beach, FL</p>
+      <h1 class="hero-title" id="hero-title">Crafted<br><em>in stone.</em><br>Built to last.</h1>
+      <p class="hero-desc" id="hero-desc">From coastal kitchen backsplashes to full-floor marble transformations — we deliver precision tilework and natural stone installation tailored to your vision.</p>
       <div class="hero-actions">
         <a href="#inquiry" class="btn-primary">Request a Free Estimate</a>
         <a href="gallery.html" class="btn-secondary">View Our Work</a>
@@ -1484,7 +1484,14 @@
       </div>
     </div>
     <div class="services-grid" id="services-grid">
-      <!-- populated by JS -->
+      <!-- Static fallback for crawlers / no-JS; replaced by loadServices() -->
+      <div class="service-card"><h3 class="service-name">Kitchen &amp; Bath Tile</h3></div>
+      <div class="service-card"><h3 class="service-name">Natural Stone Flooring</h3></div>
+      <div class="service-card"><h3 class="service-name">Outdoor &amp; Other</h3></div>
+      <div class="service-card"><h3 class="service-name">Custom Mosaic &amp; Inlay</h3></div>
+      <div class="service-card"><h3 class="service-name">Commercial Installations</h3></div>
+      <div class="service-card"><h3 class="service-name">Restoration &amp; Repair</h3></div>
+      <div class="service-card"><h3 class="service-name">LVP &amp; Engineered Hardwood</h3></div>
     </div>
   </section>
 
@@ -1827,7 +1834,7 @@
 
         if (item.image) {
           div.innerHTML = `
-        <img src="${item.image}" alt="${item.title}" />
+        <img src="${item.image}" alt="${item.title} — Apex Stone & Tile, ${item.tag || 'tile installation'}, Fernandina Beach FL" />
         <div class="gallery-overlay"><span class="gallery-tag">${item.tag}</span></div>`;
         } else {
           div.innerHTML = `

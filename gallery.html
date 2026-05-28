@@ -1038,7 +1038,7 @@
       const ratio = item.ratio || (index % 3 === 1 ? '3/4' : '4/3');
       const gradient = cmsPlaceholderGradients[index % cmsPlaceholderGradients.length];
       const imageHtml = item.image
-        ? `<img class="gallery-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(title)}" style="--ratio:${escapeHtml(ratio)}" />`
+        ? `<img class="gallery-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(title)} — Apex Stone & Tile, ${escapeHtml(tag)}, Fernandina Beach FL" style="--ratio:${escapeHtml(ratio)}" />`
         : `<div class="gallery-img-placeholder" style="--ratio:${escapeHtml(ratio)}; --gradient: ${gradient};"></div>`;
 
       const card = document.createElement('div');

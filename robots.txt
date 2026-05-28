@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://apexstoneandtile.netlify.app/sitemap.xml
