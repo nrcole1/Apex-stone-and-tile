@@ -186,9 +186,18 @@
       background-image: var(--hero-bg, none);
       background-size: cover;
       background-position: center center;
-      opacity: 0.50;
+      opacity: 0.70;
       z-index: 0;
       transition: opacity 0.6s ease;
+    }
+
+    /* Directional scrim so left-side text stays readable */
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(44,40,37,0.80) 0%, rgba(44,40,37,0.35) 65%, transparent 100%);
+      z-index: 0;
     }
 
     /* Ensure all text + buttons sit above the image */
@@ -210,7 +219,7 @@
 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 7vw, 6.5rem);
+      font-size: clamp(4.5rem, 9vw, 9rem);
       line-height: 0.95;
       letter-spacing: 0.04em;
       color: var(--stone);
@@ -447,7 +456,7 @@
 
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-size: clamp(3rem, 5vw, 4.5rem);
       letter-spacing: 0.05em;
       line-height: 1;
       color: var(--stone);
@@ -505,11 +514,11 @@
     }
 
     .service-card.img-revealed::after {
-      opacity: 0.14;
+      opacity: 0.20;
     }
 
     .service-card:hover::after {
-      opacity: 0.22;
+      opacity: 0.32;
     }
 
     .service-card:hover {
@@ -523,8 +532,14 @@
     }
 
     .service-icon {
-      font-size: 2rem;
       margin-bottom: 1.5rem;
+      color: var(--rust);
+      line-height: 0;
+    }
+
+    .service-icon svg {
+      width: 28px;
+      height: 28px;
     }
 
     .service-num {
@@ -579,7 +594,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 280px 280px;
+      grid-template-rows: repeat(3, 240px);
       gap: 6px;
       margin-top: 3rem;
     }
@@ -1205,7 +1220,6 @@
       }
 
       .service-icon {
-        font-size: 1.8rem;
         margin-bottom: 1rem;
       }
 
@@ -1412,11 +1426,8 @@
     <div class="gallery-grid reveal" id="gallery-grid">
       <!-- populated by JS -->
     </div>
-    <div class="reveal" style="text-align:center; margin-top:3rem;">
-      <p
-        style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--travertine);margin-bottom:1rem;">
-        Every project is one of a kind — just like your space.</p>
-      <a href="#inquiry" class="btn-primary">Discuss Your Project</a>
+    <div class="reveal" style="text-align:center; margin-top:2rem;">
+      <a href="gallery.html" class="btn-secondary">View All 37 Projects →</a>
     </div>
   </section>
 
@@ -1727,7 +1738,7 @@
       // Move featured item first
       const featured = sorted.find(g => g.featured) || sorted[0];
       const rest = sorted.filter(g => g !== featured);
-      const ordered = [featured, ...rest].slice(0, 5);
+      const ordered = [featured, ...rest].slice(0, 8);
 
       const grid = document.getElementById('gallery-grid');
       grid.innerHTML = '';
