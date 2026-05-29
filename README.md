@@ -20,41 +20,6 @@ apex-site/
     └── uploads/        ← CMS uploads land here (auto-created)
 ```
 
----
-
-## Setup Steps (one time, ~30 minutes)
-
-### 1. Create a GitHub Repository
-1. Go to github.com and sign in (or create a free account)
-2. Click **New repository**
-3. Name it `apex-stone-tile`
-4. Set it to **Public**, click **Create repository**
-5. Upload ALL files from this folder (drag & drop on GitHub works fine)
-
-### 2. Connect GitHub to Netlify
-1. Go to app.netlify.com → **Add new site → Import an existing project**
-2. Choose **GitHub** and select your `apex-stone-tile` repo
-3. Leave build settings blank (no build command needed)
-4. Click **Deploy site**
-5. In Site Settings → Domain, set your custom domain (apexstoneandtile.netlify.app is already set)
-
-### 3. Enable Netlify Identity
-1. In Netlify dashboard → **Identity** tab → click **Enable Identity**
-2. Under **Registration**, set to **Invite only** (important!)
-3. Under **Services → Git Gateway**, click **Enable Git Gateway**
-
-### 4. Invite Admin Users
-1. In Identity tab → click **Invite users**
-2. Enter your email + any co-admin emails (up to 2 others)
-3. Each person accepts the invite via email and sets a password
-
-### 5. Access the Admin Panel
-- Go to: **yoursite.netlify.app/admin**
-- Log in with your Netlify Identity credentials
-- You'll see panels for: Hero, Stats, About, Contact, Process, Services, Gallery
-
----
-
 ## Using the Admin Panel
 
 ### Updating Images
