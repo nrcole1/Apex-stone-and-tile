@@ -1,7 +1,7 @@
 {
   "steps": [
-    { "title": "We don't subcontract.", "desc": "Your project is handled by our own crew, start to finish. The team that quotes your job is the team that installs it." },
     { "title": "Inquiry & Consult", "desc": "Fill out our quote form or give us a call. We'll schedule a free on-site consultation to assess your space and vision." },
+    { "title": "Design & Select", "desc": "We help you select materials that match your aesthetic, budget, and environment — with samples and expert guidance." },
     { "title": "We stay until it's right.", "desc": "Every seam, every edge, every grout line. We don't call it finished until it meets our standard and yours." }
   ]
 }
