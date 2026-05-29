@@ -4,7 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Stone &amp; Tile — Fernandina Beach, FL</title>
+  <title>Apex Stone &amp; Tile | Tile &amp; Stone Installation — Fernandina Beach, FL</title>
+  <meta name="description" content="Expert tile and stone installation in Fernandina Beach, FL. Kitchen backsplashes, marble showers, natural stone flooring &amp; more. Licensed &amp; insured. Free estimates.">
+  <meta property="og:title" content="Apex Stone &amp; Tile — Fernandina Beach, FL">
+  <meta property="og:description" content="Custom stone and tile installation serving Nassau County. Kitchens, baths, flooring, and commercial. Free on-site estimates.">
+  <meta property="og:image" content="/images/uploads/gallery/shower-stone-enclosure.webp">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://apexstoneandtile.netlify.app/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Apex Stone & Tile",
+    "url": "https://apexstoneandtile.netlify.app",
+    "telephone": "(904) 887-0068",
+    "email": "apexstonetile@yahoo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Fernandina Beach",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.6694,
+      "longitude": -81.4626
+    },
+    "areaServed": [
+      "Fernandina Beach", "Amelia Island", "Yulee", "Callahan",
+      "Nassau County", "Duval County"
+    ],
+    "priceRange": "$$",
+    "description": "Custom stone and tile installation serving Nassau County and surrounding areas.",
+    "foundingDate": "2009"
+  }
+  </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -105,6 +140,23 @@
 
     .nav-cta:hover {
       background: var(--rust) !important;
+    }
+
+    .nav-phone {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--slate);
+      transition: color 0.2s;
+    }
+
+    .nav-phone:hover {
+      color: var(--rust);
+    }
+
+    @media (max-width: 900px) {
+      .nav-phone { display: none; }
     }
 
     /* HERO */
@@ -395,7 +447,7 @@
 
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-size: clamp(3rem, 5vw, 4.5rem);
       letter-spacing: 0.05em;
       line-height: 1;
       color: var(--stone);
@@ -453,11 +505,11 @@
     }
 
     .service-card.img-revealed::after {
-      opacity: 0.14;
+      opacity: 0.20;
     }
 
     .service-card:hover::after {
-      opacity: 0.22;
+      opacity: 0.32;
     }
 
     .service-card:hover {
@@ -471,8 +523,14 @@
     }
 
     .service-icon {
-      font-size: 2rem;
       margin-bottom: 1.5rem;
+      color: var(--rust);
+      line-height: 0;
+    }
+
+    .service-icon svg {
+      width: 28px;
+      height: 28px;
     }
 
     .service-num {
@@ -527,7 +585,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 280px 280px;
+      grid-template-rows: repeat(3, 240px);
       gap: 6px;
       margin-top: 3rem;
     }
@@ -661,15 +719,6 @@
       position: relative;
     }
 
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 2.2rem;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: rgba(201, 185, 154, 0.2);
-    }
 
     .process-step {
       padding: 0 2rem;
@@ -915,9 +964,11 @@
       margin-bottom: 0.5rem;
     }
 
-    .form-subtitle {
-      font-size: 0.82rem;
-      color: var(--travertine);
+    .response-commitment {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--rust);
       margin-bottom: 2rem;
       font-style: italic;
     }
@@ -997,6 +1048,87 @@
       transform: translateY(-1px);
     }
 
+    /* SERVICE AREA */
+    .service-area {
+      background: var(--cream);
+      padding: 5rem 6rem;
+      text-align: center;
+    }
+
+    .service-area .section-eyebrow {
+      margin-bottom: 0.75rem;
+    }
+
+    .service-area-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      letter-spacing: 0.04em;
+      color: var(--stone);
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .service-area-title em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--rust);
+    }
+
+    .service-area-cities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .service-area-city {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--slate);
+      position: relative;
+    }
+
+    .service-area-city:not(:last-child)::after {
+      content: '·';
+      position: absolute;
+      right: -0.9rem;
+      color: var(--travertine);
+    }
+
+    .service-area-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--slate);
+    }
+
+    .service-area-note a {
+      color: var(--rust);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--travertine);
+      transition: border-color 0.2s;
+    }
+
+    .service-area-note a:hover {
+      border-color: var(--rust);
+    }
+
+    @media (max-width: 900px) {
+      .service-area {
+        padding: 3.5rem 1.5rem;
+      }
+      .service-area-cities {
+        gap: 0.5rem 1.5rem;
+      }
+      .service-area-city {
+        font-size: 1.2rem;
+      }
+    }
+
     /* FOOTER */
     footer {
       background: var(--stone);
@@ -1046,6 +1178,19 @@
       font-size: 0.72rem;
       color: rgba(201, 185, 154, 0.4);
       letter-spacing: 0.08em;
+    }
+
+    .footer-phone {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--travertine);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-phone:hover {
+      color: var(--gold);
     }
 
     /* ANIMATIONS */
@@ -1140,7 +1285,6 @@
       }
 
       .service-icon {
-        font-size: 1.8rem;
         margin-bottom: 1rem;
       }
 
@@ -1185,7 +1329,22 @@
       }
 
       .about-visual {
+        display: block;
+        position: static;
+      }
+
+      .about-img-main {
+        aspect-ratio: 16/9;
+        width: 100%;
+      }
+
+      .about-img-accent,
+      .about-years-badge {
         display: none;
+      }
+
+      .gallery-item {
+        min-height: 180px;
       }
 
       #inquiry {
@@ -1203,6 +1362,62 @@
       }
 
     }
+
+    /* STICKY MOBILE CTA BAR */
+    #mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    #mobile-cta-bar.visible {
+      transform: translateY(0);
+    }
+
+    #mobile-cta-bar.hidden {
+      transform: translateY(100%);
+    }
+
+    .mobile-cta-inner {
+      display: flex;
+    }
+
+    .mobile-cta-phone,
+    .mobile-cta-quote {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mobile-cta-phone {
+      background: var(--stone);
+      color: var(--cream);
+    }
+
+    .mobile-cta-quote {
+      background: var(--rust);
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      #mobile-cta-bar {
+        display: block;
+      }
+    }
   </style>
 </head>
 
@@ -1217,19 +1432,21 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#inquiry" class="nav-cta">Get a Quote</a></li>
+      <li><a href="#inquiry" class="nav-cta">Get a Free Quote</a></li>
     </ul>
+    <a href="tel:+19048870068" class="nav-phone">(904) 887-0068</a>
   </nav>
 
   <!-- HERO -->
   <section id="home">
     <div class="hero-left">
-      <p class="hero-eyebrow" id="hero-eyebrow"></p>
-      <h1 class="hero-title" id="hero-title"></h1>
-      <p class="hero-desc" id="hero-desc"></p>
+      <p class="hero-eyebrow" id="hero-eyebrow">Custom Stonework · Fernandina Beach, FL</p>
+      <h1 class="hero-title" id="hero-title">Crafted<br><em>in stone.</em><br>Built to last.</h1>
+      <p class="hero-desc" id="hero-desc">From coastal kitchen backsplashes to full-floor marble transformations — we deliver precision tilework and natural stone installation tailored to your vision.</p>
       <div class="hero-actions">
-        <a href="#inquiry" class="btn-primary">Request a Quote</a>
+        <a href="#inquiry" class="btn-primary">Request a Free Estimate</a>
         <a href="gallery.html" class="btn-secondary">View Our Work</a>
       </div>
       <div class="hero-badge">
@@ -1258,7 +1475,14 @@
       </div>
     </div>
     <div class="services-grid" id="services-grid">
-      <!-- populated by JS -->
+      <!-- Static fallback for crawlers / no-JS; replaced by loadServices() -->
+      <div class="service-card"><h3 class="service-name">Kitchen &amp; Bath Tile</h3></div>
+      <div class="service-card"><h3 class="service-name">Natural Stone Flooring</h3></div>
+      <div class="service-card"><h3 class="service-name">Outdoor &amp; Other</h3></div>
+      <div class="service-card"><h3 class="service-name">Custom Mosaic &amp; Inlay</h3></div>
+      <div class="service-card"><h3 class="service-name">Commercial Installations</h3></div>
+      <div class="service-card"><h3 class="service-name">Restoration &amp; Repair</h3></div>
+      <div class="service-card"><h3 class="service-name">LVP &amp; Engineered Hardwood</h3></div>
     </div>
   </section>
 
@@ -1274,11 +1498,8 @@
     <div class="gallery-grid reveal" id="gallery-grid">
       <!-- populated by JS -->
     </div>
-    <div class="reveal" style="text-align:center; margin-top:3rem;">
-      <p
-        style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--travertine);margin-bottom:1rem;">
-        Every project is one of a kind — just like your space.</p>
-      <a href="#inquiry" class="btn-primary">Discuss Your Project</a>
+    <div class="reveal" style="text-align:center; margin-top:2rem;">
+      <a href="gallery.html" class="btn-secondary">View All 37 Projects →</a>
     </div>
   </section>
 
@@ -1286,8 +1507,8 @@
   <div class="process-section">
     <div class="section-header reveal" style="justify-content:flex-start;">
       <div>
-        <p class="section-eyebrow">How It Works</p>
-        <h2 class="section-title">Simple <em>Process</em></h2>
+        <p class="section-eyebrow">Why Apex</p>
+        <h2 class="section-title">The Apex <em>Difference</em></h2>
       </div>
     </div>
     <div class="process-steps reveal" id="process-steps">
@@ -1357,9 +1578,10 @@
     </div>
     <div class="inquiry-form reveal">
       <h3 class="form-title">Request a Free Quote</h3>
-      <p class="form-subtitle">We typically respond within 24 hours.</p>
-      <form name="contact" method="POST" data-netlify="true">
+      <p class="response-commitment">Free on-site consultation — no obligation.<br>We respond within 1 business day.</p>
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <div class="form-row">
           <div class="form-group">
             <label>First Name</label>
@@ -1388,18 +1610,6 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Approximate Square Footage</label>
-          <select name="sqft">
-            <option value="">Select a range...</option>
-            <option>Under 100 sq ft</option>
-            <option>100–300 sq ft</option>
-            <option>300–600 sq ft</option>
-            <option>600–1,000 sq ft</option>
-            <option>1,000+ sq ft</option>
-            <option>Not Sure</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label>Tell Us About Your Project</label>
           <textarea name="message"
             placeholder="Describe your space, your vision, any materials you have in mind, or any questions you have..."></textarea>
@@ -1407,6 +1617,21 @@
         <button type="submit" class="submit-btn">Submit Quote Request →</button>
       </form>
     </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="service-area reveal">
+    <p class="section-eyebrow">Service Area</p>
+    <h2 class="service-area-title">Serving Nassau County <em>&amp; Beyond</em></h2>
+    <div class="service-area-cities">
+      <span class="service-area-city">Fernandina Beach</span>
+      <span class="service-area-city">Amelia Island</span>
+      <span class="service-area-city">Yulee</span>
+      <span class="service-area-city">Callahan</span>
+      <span class="service-area-city">Hilliard</span>
+      <span class="service-area-city">Jacksonville (North)</span>
+    </div>
+    <p class="service-area-note">Not sure if we cover your area? <a href="tel:+19048870068">Give us a call.</a></p>
   </section>
 
   <!-- FOOTER -->
@@ -1423,6 +1648,7 @@
       <li><a href="#inquiry">Contact</a></li>
     </ul>
     <p class="footer-copy">© 2025 Apex Stone &amp; Tile. All rights reserved.</p>
+    <a href="tel:+19048870068" class="footer-phone">(904) 887-0068</a>
   </footer>
 
   <script>
@@ -1587,7 +1813,7 @@
       // Move featured item first
       const featured = sorted.find(g => g.featured) || sorted[0];
       const rest = sorted.filter(g => g !== featured);
-      const ordered = [featured, ...rest].slice(0, 5);
+      const ordered = [featured, ...rest].slice(0, 8);
 
       const grid = document.getElementById('gallery-grid');
       grid.innerHTML = '';
@@ -1599,7 +1825,7 @@
 
         if (item.image) {
           div.innerHTML = `
-        <img src="${item.image}" alt="${item.title}" />
+        <img src="${item.image}" alt="${item.title} — Apex Stone & Tile, ${item.tag || 'tile installation'}, Fernandina Beach FL" />
         <div class="gallery-overlay"><span class="gallery-tag">${item.tag}</span></div>`;
         } else {
           div.innerHTML = `
@@ -1723,6 +1949,63 @@
     })();
   </script>
   <script src="mobile-nav.js"></script>
+
+  <!-- STICKY MOBILE CTA BAR -->
+  <div id="mobile-cta-bar" aria-hidden="true">
+    <div class="mobile-cta-inner">
+      <a href="tel:+19048870068" class="mobile-cta-phone">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.47 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 16 16.73l.88-.88a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (904) 887-0068
+      </a>
+      <a href="#inquiry" class="mobile-cta-quote">Get a Free Quote</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const bar = document.getElementById('mobile-cta-bar');
+      if (!bar) return;
+
+      let scrollShown = false;
+      const SCROLL_THRESHOLD = 0.20;
+
+      function updateBar() {
+        if (scrollShown) {
+          bar.classList.add('visible');
+          bar.classList.remove('hidden');
+          bar.removeAttribute('aria-hidden');
+        } else {
+          bar.classList.remove('visible');
+          bar.classList.add('hidden');
+          bar.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      window.addEventListener('scroll', function () {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollShown = docHeight > 0 && (window.scrollY / docHeight) >= SCROLL_THRESHOLD;
+        updateBar();
+      }, { passive: true });
+
+      const inquiry = document.getElementById('inquiry');
+      if (inquiry) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              bar.classList.remove('visible');
+              bar.classList.add('hidden');
+              bar.setAttribute('aria-hidden', 'true');
+            } else if (scrollShown) {
+              bar.classList.add('visible');
+              bar.classList.remove('hidden');
+              bar.removeAttribute('aria-hidden');
+            }
+          });
+        }, { threshold: 0.15 });
+        observer.observe(inquiry);
+      }
+    })();
+  </script>
 </body>
 
 </html>
