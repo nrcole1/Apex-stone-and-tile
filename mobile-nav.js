@@ -206,7 +206,8 @@
 
   const closeBtn = drawer.querySelector('.drawer-close');
   const drawerLinks = drawer.querySelectorAll('.drawer-link, .drawer-cta a');
-  const quoteCta = drawer.querySelector('.drawer-cta a');
+  // Both "Contact" and "Get a Quote" point at the inquiry form.
+  const inquiryLinks = drawer.querySelectorAll('a[href$="#inquiry"]');
 
   // ── Open / close logic ───────────────────────────────────────────────────
   function openDrawer() {
@@ -239,20 +240,20 @@
     link.addEventListener('click', closeDrawer);
   });
 
-  // ── "Get a Quote" → land on the inquiry form, not a page reload ───────────
+  // ── "Contact" / "Get a Quote" → land on the inquiry form, not a reload ────
   // When the inquiry section is already on this page (the home page), close the
   // drawer and smooth-scroll straight to it. Reloading via the href would jump
   // before the JS-populated content settles and land at the wrong spot. On the
   // gallery page (no #inquiry present) the normal href navigation is used.
-  if (quoteCta) {
-    quoteCta.addEventListener('click', (e) => {
+  inquiryLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
       const inquiry = document.getElementById('inquiry');
       if (!inquiry) return; // let the href take us to index.html#inquiry
       e.preventDefault();
       closeDrawer();
       inquiry.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  }
+  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDrawer();
