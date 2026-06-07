@@ -2072,6 +2072,18 @@
       initReveal();
       initNav();
       initContactForm();
+
+      // If we arrived with a hash (e.g. index.html#inquiry from the gallery
+      // page), scroll to it now that the JS-populated content has settled.
+      // The browser's native jump fires before content loads and lands short.
+      if (window.location.hash) {
+        const target = document.getElementById(window.location.hash.slice(1));
+        if (target) {
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+      }
     })();
   </script>
   <script src="mobile-nav.js"></script>
